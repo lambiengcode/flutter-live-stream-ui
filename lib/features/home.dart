@@ -4,11 +4,11 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
-import 'package:streamskit_mobile/features/chat/presentation/page/chat_page.dart';
+import 'package:streamskit_mobile/features/chat/presentation/screens/chat_page.dart';
 import 'package:streamskit_mobile/features/home/presentation/screens/home_screen.dart';
-import 'package:streamskit_mobile/features/profile/presentation/page/profile_page.dart';
+import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 import 'package:streamskit_mobile/features/search/presentation/page/search_page.dart';
-import 'package:streamskit_mobile/features/steam/presentation/page/stream_page.dart';
+import 'package:streamskit_mobile/features/stream/presentation/page/stream_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
     const SearchPage(),
     const StreamPage(),
     const ChatPage(),
-    const ProfilePage(),
+    const ProfileScreen(),
   ];
   int _currentIndex = 0;
 
