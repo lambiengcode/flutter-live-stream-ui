@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
-import 'package:streamskit_mobile/features/home/presentation/widget/user_widget.dart';
+import 'package:streamskit_mobile/features/home/presentation/widgets/user_widget.dart';
 
 class ListUserFollow extends StatelessWidget {
   const ListUserFollow({Key? key}) : super(key: key);
@@ -9,7 +9,7 @@ class ListUserFollow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 82.sp,
+      height: 88.sp,
       width: double.infinity,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 16.sp),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
@@ -14,8 +15,6 @@ class UserWidget extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 50.sp,
-            width: 50.sp,
             padding: EdgeInsets.all(3.5.sp),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -24,19 +23,25 @@ class UserWidget extends StatelessWidget {
                 color: colorPurple2,
               ),
             ),
-            child: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    userModel.urlToImage,
-                  ),
-                  fit: BoxFit.cover,
-                ),
-              ),
+            // child: Container(
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     image: DecorationImage(
+            //       image: NetworkImage(
+            //         userModel.urlToImage,
+            //       ),
+            //       fit: BoxFit.cover,
+            //     ),
+            //   ),
+            // ),
+            child: CustomNetworkImage(
+              height: 48.sp,
+              width: 48.sp,
+              urlToImage: userModel.urlToImage,
+              shape: BoxShape.circle,
             ),
           ),
-          SizedBox(height: 4.sp),
+          SizedBox(height: 12.sp),
           Text(
             userModel.fullName,
             style: TextStyle(
