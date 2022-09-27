@@ -4,11 +4,11 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
-import 'package:streamskit_mobile/features/chat/presentation/screens/chat_page.dart';
+import 'package:streamskit_mobile/features/chat/presentation/screens/chat_screen.dart';
 import 'package:streamskit_mobile/features/home/presentation/screens/home_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
-import 'package:streamskit_mobile/features/search/presentation/page/search_page.dart';
-import 'package:streamskit_mobile/features/stream/presentation/page/stream_page.dart';
+import 'package:streamskit_mobile/features/search/presentation/screens/search_screen.dart';
+import 'package:streamskit_mobile/features/stream/presentation/screens/stream_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,9 +20,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Widget> _tabs = [
     const HomeScreen(),
-    const SearchPage(),
-    const StreamPage(),
-    const ChatPage(),
+    const SearchScreen(),
+    const StreamScreen(),
+    const ChatScreen(),
     const ProfileScreen(),
   ];
   int _currentIndex = 0;
@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.sp),
                   height: 70.sp,
-                  color: Colors.transparent,
+                  color: Colors.black.withOpacity(0.3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
