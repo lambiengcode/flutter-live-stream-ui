@@ -4,7 +4,6 @@ import 'package:streamskit_mobile/core/util/constants/constants.dart';
 import 'package:streamskit_mobile/core/util/custom_image/default_image.dart';
 import 'package:streamskit_mobile/core/util/custom_image/place_holder_image.dart';
 
-
 class CustomNetworkImage extends StatelessWidget {
   final String? urlToImage;
   final double? height;
