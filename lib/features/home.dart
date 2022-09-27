@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                       ),
                       _buildItemBottomBar(
                         inActiveIcon: PhosphorIcons.magnifyingGlassLight,
-                        activeIcon: PhosphorIcons.magnifyingGlassFill,
+                        activeIcon: PhosphorIcons.magnifyingGlassBold,
                         index: 1,
                       ),
                       _buildItemBottomBar(
