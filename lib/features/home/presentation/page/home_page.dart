@@ -4,6 +4,8 @@ import 'package:streamskit_mobile/core/util/app_bars/appbar_none.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
+import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 import 'package:streamskit_mobile/features/home/presentation/widget/list_category_home.dart';
 import 'package:streamskit_mobile/features/home/presentation/widget/list_user_follow.dart';
 
@@ -39,6 +41,7 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 mainAxisSpacing: 15.sp,
                 crossAxisSpacing: 15.sp,
+                itemCount: listLiveStreamFake.length,
                 itemBuilder: (context, index) {
                   return index == 1
                       ? Container(
@@ -48,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                             image: DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
-                                'assets/images/img_start_stream.png',
+                                imageStartStream,
                               ),
                             ),
                           ),
@@ -56,47 +59,76 @@ class _HomePageState extends State<HomePage> {
                       : Stack(
                           children: [
                             CustomNetworkImage(
-                              urlToImage:
-                                  'https://blogger.googleusercontent.com/img/a/AVvXsEidz_saG2QkwDXMS7aP6Xx_gxMkk1kUj8B0PXI2nlKhVoBKp5v0Rm6IPRf93H4UjdzZe06W2Hy-yXtiC1yu7-wFYmrA19Zzvv-sQUPYyKxRfgpwtnPJaGcDXW5wK1DRFYvEa70DX2H-WYYntvlwsCiDtv764ZC4whZ96DJ-zFwC6dcfGLcf4oBFgOu6vg=w640-h360',
+                              urlToImage: listLiveStreamFake[index].urlToImage,
                               height: 150.sp,
                               shape: BoxShape.rectangle,
                               borderRadius: BorderRadius.circular(
                                 13.sp,
                               ),
-                              fit: BoxFit.cover,
+                              // fit: BoxFit.cover,
                             ),
-                            Container(
-                              height: 150.sp,
-                              padding: EdgeInsets.all(8.sp),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 7.sp,
-                                      vertical: 4.sp,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: Colors.redAccent,
-                                      borderRadius: BorderRadius.circular(
-                                        9.sp,
+                            Positioned(
+                              right: 0,
+                              child: Container(
+                                padding: EdgeInsets.all(8.sp),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 8.sp,
+                                        vertical: 4.sp,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        color: listLiveStreamFake[index]
+                                            .getColorType,
+                                        borderRadius: BorderRadius.circular(
+                                          9.sp,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        listLiveStreamFake[index].getTitleType,
+                                        style: TextStyle(
+                                          color: mCL,
+                                          fontSize: 9.sp,
+                                        ),
                                       ),
                                     ),
-                                    child: Text(
-                                      'Game',
-                                      style: TextStyle(
-                                        color: mCL,
-                                        fontSize: 9.sp,
+                                    SizedBox(height: 2.sp),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                        horizontal: 6.sp,
+                                        vertical: 4.sp,
                                       ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: Row(
-                                      children: [],
-                                    ),
-                                  )
-                                ],
+                                      decoration: BoxDecoration(
+                                        color: mCH.withOpacity(0.45),
+                                        borderRadius:
+                                            BorderRadius.circular(10.sp),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Image.asset(
+                                            iconEye,
+                                            height: 13.sp,
+                                            width: 13.sp,
+                                            fit: BoxFit.cover,
+                                            color: Colors.white,
+                                          ),
+                                          SizedBox(width: 5.sp),
+                                          Text(
+                                            '${listLiveStreamFake[index].peopleParticipant}',
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 9.sp,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           ],
