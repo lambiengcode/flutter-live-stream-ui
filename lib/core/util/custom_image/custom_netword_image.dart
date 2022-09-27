@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:streamskit_mobile/core/util/constants/constants.dart';
+import 'package:streamskit_mobile/core/app/constants.dart';
 import 'package:streamskit_mobile/core/util/custom_image/default_image.dart';
 import 'package:streamskit_mobile/core/util/custom_image/place_holder_image.dart';
 

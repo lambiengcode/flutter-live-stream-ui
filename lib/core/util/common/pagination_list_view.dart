@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:streamskit_mobile/core/app/constants.dart';
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
-import 'package:streamskit_mobile/core/util/constants/constants.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 
 class PaginationListView extends StatefulWidget {
@@ -72,7 +72,7 @@ class _PaginationListViewState extends State<PaginationListView> {
         if (widget.callBackRefresh != null) {
           widget.callBackRefresh!(() => _refreshController.refreshCompleted());
         } else {
-          await Future.delayed(const Duration(milliseconds: delayHalfSecond));
+          await Future.delayed(const Duration(milliseconds: delay500ms));
           _refreshController.refreshCompleted();
         }
       },
