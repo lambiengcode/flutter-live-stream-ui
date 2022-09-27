@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+
 class CategoryModel {
   String title;
   String image;
@@ -54,8 +56,8 @@ class CategoryModel {
 }
 
 List<CategoryModel> listCategoryFake = [
-  CategoryModel(title: 'Popular', image: 'assets/icons/ic_fire.png'),
-  CategoryModel(title: 'Nearby', image: 'assets/icons/ic_nearby.png'),
-  CategoryModel(title: 'Games', image: 'assets/icons/ic_game.png'),
-  CategoryModel(title: 'Sharing', image: 'assets/icons/ic_sharing.png'),
+  CategoryModel(title: 'Popular', image: iconFire),
+  CategoryModel(title: 'Nearby', image: iconNearby),
+  CategoryModel(title: 'Games', image: iconGame),
+  CategoryModel(title: 'Sharing', image: iconSharing),
 ];
