@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/message_widget.dart';
 
 class CommentWidgets extends StatefulWidget {
@@ -13,7 +14,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 250.sp,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -24,22 +25,23 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                   child: MessageWidget(),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10.sp,
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(10.sp),
                     color: Colors.black.withOpacity(0.20),
                   ),
                   child: TextField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintStyle: TextStyle(fontSize: 14, color: Colors.white),
+                      hintStyle:
+                          TextStyle(fontSize: 13.sp, color: Colors.white),
                       hintText: 'Type your comment...',
-                      contentPadding: EdgeInsets.all(12),
+                      contentPadding: EdgeInsets.all(12.sp),
                       suffixIcon: Icon(
                         PhosphorIcons.paperPlaneTiltFill,
-                        size: 26.0,
+                        size: 16.0.sp,
                         color: Colors.white,
                       ),
                     ),
@@ -49,7 +51,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
             ),
           ),
           SizedBox(
-            width: 30,
+            width: 18.sp,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -58,38 +60,38 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Container(
-                    height: 48,
-                    width: 48,
+                    height: 42.sp,
+                    width: 42.sp,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(16.sp),
                       color: Colors.black.withOpacity(0.20),
                     ),
                     child: Icon(
                       Icons.favorite,
                       color: Colors.red,
-                      size: 26.0,
+                      size: 16.0.sp,
                     ),
                   ),
                 ],
               ),
               SizedBox(
-                height: 14,
+                height: 10.sp,
               ),
               GestureDetector(
                 onTap: () {
                   print('Halo');
                 },
                 child: Container(
-                  height: 48,
-                  width: 48,
+                  height: 42.sp,
+                  width: 42.sp,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius: BorderRadius.circular(16.sp),
                     color: Colors.black.withOpacity(0.20),
                   ),
                   child: Icon(
                     Icons.card_giftcard,
                     color: Colors.white,
-                    size: 26.0,
+                    size: 16.0.sp,
                   ),
                 ),
               ),

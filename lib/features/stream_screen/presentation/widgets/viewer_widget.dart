@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 
 class ViewerWidget extends StatefulWidget {
   ViewerWidget({Key? key}) : super(key: key);
@@ -11,11 +12,11 @@ class _ViewerWidgetState extends State<ViewerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(8),
-      padding: EdgeInsets.symmetric(horizontal: 8),
-      height: 26,
+      margin: EdgeInsets.all(4.sp),
+      padding: EdgeInsets.symmetric(horizontal: 6.sp),
+      height: 24.sp,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(100),
+        borderRadius: BorderRadius.circular(100.sp),
         color: Colors.white.withOpacity(0.25),
       ),
       child: Center(
@@ -24,14 +25,14 @@ class _ViewerWidgetState extends State<ViewerWidget> {
             Icon(
               Icons.remove_red_eye_outlined,
               color: Colors.white,
-              size: 16,
+              size: 14.sp,
             ),
             SizedBox(
-              width: 6,
+              width: 6.sp,
             ),
             Text(
               '1826',
-              style: TextStyle(fontSize: 14, color: Colors.white),
+              style: TextStyle(fontSize: 11.sp, color: Colors.white),
             ),
           ],
         ),

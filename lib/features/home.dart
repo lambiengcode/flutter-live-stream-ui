@@ -8,7 +8,7 @@ import 'package:streamskit_mobile/features/chat/presentation/page/chat_page.dart
 import 'package:streamskit_mobile/features/home/presentation/page/home_page.dart';
 import 'package:streamskit_mobile/features/profile/presentation/page/profile_page.dart';
 import 'package:streamskit_mobile/features/search/presentation/page/search_page.dart';
-import 'package:streamskit_mobile/features/steam/presentation/page/stream_page.dart';
+import 'package:streamskit_mobile/features/stream_screen/presentation/pages/stream_page.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _tabs = [
     HomePage(),
     SearchPage(),
-    StreamPage(),
+    StreamScreen(),
     ChatPage(),
     ProfilePage(),
   ];

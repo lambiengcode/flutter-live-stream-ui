@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/name_live_widget.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/viewer_widget.dart';
 
@@ -12,10 +13,10 @@ class AppBarStream extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.circular(100.0),
+            borderRadius: BorderRadius.circular(100.0.sp),
             child: Container(
-              width: 38,
-              height: 38,
+              width: 32.sp,
+              height: 32.sp,
               color: Colors.white.withOpacity(0.25),
               child: Icon(
                 Icons.arrow_back,
@@ -24,11 +25,11 @@ class AppBarStream extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 10,
+            width: 10.sp,
           ),
           FullnameLiveWidget(),
           SizedBox(
-            width: 28,
+            width: 18.sp,
           ),
           ViewerWidget(),
         ],

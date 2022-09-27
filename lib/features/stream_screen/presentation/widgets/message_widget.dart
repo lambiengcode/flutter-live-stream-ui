@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream_screen/data/models/message_model.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/author_message_card.dart';
 
@@ -36,7 +37,7 @@ class _MessageWidgetState extends State<MessageWidget> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8),
-      height: 200,
+      height: 200.sp,
       child: Row(
         children: [
           Expanded(

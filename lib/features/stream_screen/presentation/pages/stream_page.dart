@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/app_bar_stream.dart';
 import 'package:streamskit_mobile/features/stream_screen/presentation/widgets/comment_widget.dart';
 
@@ -20,12 +21,14 @@ class _StreamScreenState extends State<StreamScreen> {
           color: Colors.purple.withOpacity(0.2),
           child: Stack(
             children: [
-              Image.asset('public/assets/images/stream_image.jpg'),
+              Image.asset('assets/images/stream_image.jpg'),
               Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                  padding:
+                      EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
                   child: AppBarStream()),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20.sp)
+                    .add(EdgeInsets.only(bottom: 80.sp)),
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Column(
