@@ -15,7 +15,7 @@ class _ListCategoryHomeState extends State<ListCategoryHome> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 37.sp,
       width: double.infinity,
       child: ListView.builder(

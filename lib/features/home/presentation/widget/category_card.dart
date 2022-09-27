@@ -21,7 +21,10 @@ class CategoryCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: EdgeInsets.only(right: 10.sp),
-        padding: EdgeInsets.symmetric(horizontal: 10.sp, vertical: 3.sp),
+        padding: EdgeInsets.symmetric(
+          horizontal: 10.sp,
+          vertical: 3.sp,
+        ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.sp),
           color: isCheck ? colorPurple : fCL,

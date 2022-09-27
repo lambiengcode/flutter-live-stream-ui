@@ -8,8 +8,8 @@ class ListUserFollow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 90.sp,
+    return SizedBox(
+      height: 82.sp,
       width: double.infinity,
       child: ListView.builder(
         padding: EdgeInsets.symmetric(horizontal: 16.sp),

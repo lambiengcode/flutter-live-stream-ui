@@ -1,5 +1,5 @@
 name: streamskit_mobile
-description: A new Flutter project.
+description: Live Studio - Open Source
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -43,13 +43,13 @@ dependencies:
 
   # UI
   flutter_staggered_grid_view: ^0.6.2
-  glassmorphism: ^3.0.0
 
   # Image
   cached_network_image: ^3.2.1
   
 
 dev_dependencies:
+  flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
 
@@ -81,12 +81,6 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
-   
-
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

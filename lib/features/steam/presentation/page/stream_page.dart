@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StreamPage extends StatefulWidget {
-  StreamPage({Key? key}) : super(key: key);
+  const StreamPage({Key? key}) : super(key: key);
 
   @override
   State<StreamPage> createState() => _StreamPageState();

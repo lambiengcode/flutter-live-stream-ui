@@ -27,8 +27,9 @@ class DefaultImage extends StatelessWidget {
         shape: shape,
         borderRadius: borderRadius,
         image: DecorationImage(
-          image: AssetImage(
-              imageDefault,),
+          image: const AssetImage(
+            imageDefault,
+          ),
           fit: shape == BoxShape.circle ? BoxFit.fitHeight : BoxFit.contain,
         ),
       ),

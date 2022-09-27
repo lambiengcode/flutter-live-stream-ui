@@ -9,7 +9,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:math' as math;
 
-import 'package:streamskit_mobile/core/util/constants/constants.dart';
+import 'package:streamskit_mobile/core/app/constants.dart';
 
 part 'extension.dart';
 

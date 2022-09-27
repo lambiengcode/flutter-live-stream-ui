@@ -9,14 +9,14 @@ import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dar
 import 'package:streamskit_mobile/features/home/presentation/widget/list_category_home.dart';
 import 'package:streamskit_mobile/features/home/presentation/widget/list_user_follow.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,19 +25,19 @@ class _HomePageState extends State<HomePage> {
         context: context,
         brightness: Brightness.dark,
       ),
-      body: Container(
-        color: Colors.black,
+      body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
-            SizedBox(height: 40.sp),
-            ListUserFollow(),
-            SizedBox(height: 15.sp),
-            ListCategoryHome(),
+            SizedBox(height: 8.sp),
+            const ListUserFollow(),
+            const ListCategoryHome(),
             SizedBox(height: 20.sp),
             Expanded(
               child: MasonryGridView.count(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 16.sp, vertical: 0.sp),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.sp,
+                ),
                 crossAxisCount: 2,
                 mainAxisSpacing: 15.sp,
                 crossAxisSpacing: 15.sp,
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
                           height: 80.sp,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.sp),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               fit: BoxFit.cover,
                               image: AssetImage(
                                 imageStartStream,

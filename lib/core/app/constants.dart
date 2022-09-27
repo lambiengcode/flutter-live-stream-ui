@@ -1,0 +1,1 @@
+const inchToDP = 160;

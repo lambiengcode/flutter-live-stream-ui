@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-var colorBlack1 = Color(0xFF191414);
-var colorPurple = Color(0xFF5f68f1);
-var colorPurple2 = Color(0xFFa9ade6);
+var colorBlack1 = const Color(0xFF191414);
+var colorPurple = const Color(0xFF5f68f1);
+var colorPurple2 = const Color(0xFFa9ade6);
 
 Color mC = Colors.grey.shade100;
 Color mCL = Colors.white;

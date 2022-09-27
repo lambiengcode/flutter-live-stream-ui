@@ -36,12 +36,12 @@ class UserWidget extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 14.sp),
+          SizedBox(height: 4.sp),
           Text(
             userModel.fullName,
             style: TextStyle(
               color: mCL,
-              fontSize: 12.sp,
+              fontSize: 10.sp,
             ),
           )
         ],
