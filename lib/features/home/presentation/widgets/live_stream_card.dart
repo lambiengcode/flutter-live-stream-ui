@@ -53,6 +53,7 @@ class LiveStreamCard extends StatelessWidget {
                 ),
                 SizedBox(height: 2.sp),
                 ClipRRect(
+                  borderRadius: BorderRadius.circular(10.sp),
                   child: BackdropFilter(
                     filter: ImageFilter.blur(
                       sigmaX: 5,
