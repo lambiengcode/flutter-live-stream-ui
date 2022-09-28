@@ -40,6 +40,32 @@ class _HomeState extends State<Home> {
           _tabs[_currentIndex],
           Align(
             alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 30.sp),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(100.sp),
+                ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 10),
+                  child: Container(
+                    padding: EdgeInsets.all(8.sp),
+                    margin: EdgeInsets.all(8.sp),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                    child: SizedBox(
+                      height: 30.sp,
+                      width: 30.sp,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(20.sp),
@@ -63,11 +89,7 @@ class _HomeState extends State<Home> {
                         activeIcon: PhosphorIcons.magnifyingGlassBold,
                         index: 1,
                       ),
-                      _buildItemBottomBar(
-                        inActiveIcon: PhosphorIcons.videoCameraLight,
-                        activeIcon: PhosphorIcons.videoCameraFill,
-                        index: 2,
-                      ),
+                      const SizedBox(),
                       _buildItemBottomBar(
                         inActiveIcon: PhosphorIcons.chatTeardropDotsLight,
                         activeIcon: PhosphorIcons.chatTeardropDotsFill,
@@ -84,6 +106,29 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: TouchableOpacity(
+              onTap: () {
+                setState(() {
+                  _currentIndex = 2;
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.all(13.sp),
+                margin: EdgeInsets.only(bottom: 38.sp),
+                decoration: BoxDecoration(
+                  color: colorPink,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  PhosphorIcons.plusBold,
+                  size: 20.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -103,7 +148,7 @@ class _HomeState extends State<Home> {
       child: Container(
         padding: EdgeInsets.all(10.sp),
         decoration: BoxDecoration(
-          color: index == _currentIndex ? colorPurple : Colors.transparent,
+          color: index == _currentIndex ? colorPink : Colors.transparent,
           borderRadius: BorderRadius.circular(15.sp),
         ),
         child: Icon(
