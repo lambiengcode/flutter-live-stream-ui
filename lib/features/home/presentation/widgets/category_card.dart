@@ -27,7 +27,7 @@ class CategoryCard extends StatelessWidget {
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.sp),
-          color: isCheck ? colorPurple : fCL,
+          color: isCheck ? colorPink : fCD,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

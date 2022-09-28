@@ -23,7 +23,7 @@ class UserWidget extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(
                     width: 1.2.sp,
-                    color: userModel.isLiveStream ? colorPurple : colorPurple2,
+                    color: userModel.isLiveStream ? colorPink : colorBlack2,
                   ),
                 ),
                 child: CustomNetworkImage(

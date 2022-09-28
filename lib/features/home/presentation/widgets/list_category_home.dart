@@ -35,7 +35,7 @@ class _ListCategoryHomeState extends State<ListCategoryHome> {
               Text(
                 'View all',
                 style: TextStyle(
-                  color: colorPurple,
+                  color: colorPink,
                   fontSize: 11.sp,
                 ),
               ),
