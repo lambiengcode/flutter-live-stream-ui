@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 class FullnameLiveWidget extends StatelessWidget {
   const FullnameLiveWidget({Key? key}) : super(key: key);
@@ -23,19 +25,12 @@ class FullnameLiveWidget extends StatelessWidget {
                       borderRadius: BorderRadius.circular(100.sp),
                       color: Colors.pink.shade300),
                   child: Center(
-                    child: Container(
-                      width: 37.sp,
+                    child: CustomNetworkImage(
                       height: 37.sp,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 1.8.sp, color: Colors.white),
-                        borderRadius: BorderRadius.circular(100.sp),
-                        image: const DecorationImage(
-                          image: NetworkImage(
-                              'https://my-test-11.slatic.net/p/96b9cce35f664d67479547587686742a.jpg'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+                      width: 37.sp,
+                      urlToImage:
+                          'https://my-test-11.slatic.net/p/96b9cce35f664d67479547587686742a.jpg',
+                      shape: BoxShape.circle,
                     ),
                   ),
                 ),
@@ -69,17 +64,17 @@ class FullnameLiveWidget extends StatelessWidget {
           'Lord Busuz',
           style: TextStyle(
               fontSize: 13.sp,
-              fontWeight: FontWeight.w600,
+              fontWeight: FontWeight.w400,
               color: Colors.white),
         ),
         SizedBox(
           width: 6.sp,
         ),
         Icon(
-          Icons.check_circle_outline,
-          color: Colors.blue.shade600,
-          size: 14.sp,
-        )
+          PhosphorIcons.circle_wavy_check_fill,
+          size: 14.0.sp,
+          color: const Color(0xff3689e2),
+        ),
       ],
     );
   }

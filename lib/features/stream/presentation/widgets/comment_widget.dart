@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/presentation/widgets/message_widget.dart';
 
@@ -36,7 +37,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintStyle:
-                          TextStyle(fontSize: 13.sp, color: Colors.white),
+                          TextStyle(fontSize: 11.sp, color: Colors.white),
                       hintText: 'Type your comment...',
                       contentPadding: EdgeInsets.all(12.sp),
                       suffixIcon: Icon(
@@ -51,7 +52,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
             ),
           ),
           SizedBox(
-            width: 18.sp,
+            width: 14.sp,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -59,17 +60,20 @@ class _CommentWidgetsState extends State<CommentWidgets> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Container(
-                    height: 42.sp,
-                    width: 42.sp,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16.sp),
-                      color: Colors.black.withOpacity(0.20),
-                    ),
-                    child: Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                      size: 16.0.sp,
+                  TouchableOpacity(
+                    onTap: () {},
+                    child: Container(
+                      height: 42.sp,
+                      width: 42.sp,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16.sp),
+                        color: Colors.black.withOpacity(0.20),
+                      ),
+                      child: Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: 16.0.sp,
+                      ),
                     ),
                   ),
                 ],
@@ -77,7 +81,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
               SizedBox(
                 height: 10.sp,
               ),
-              GestureDetector(
+              TouchableOpacity(
                 onTap: () {},
                 child: Container(
                   height: 42.sp,
@@ -87,9 +91,8 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                     color: Colors.black.withOpacity(0.20),
                   ),
                   child: Icon(
-                    Icons.card_giftcard,
-                    color: Colors.white,
-                    size: 16.0.sp,
+                    PhosphorIcons.giftThin,
+                    size: 18.sp,
                   ),
                 ),
               ),

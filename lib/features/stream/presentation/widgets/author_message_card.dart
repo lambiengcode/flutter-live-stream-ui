@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/data/models/message_model.dart';
 
@@ -19,20 +20,11 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            width: 38.sp,
-            height: 38.sp,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1.4, color: Colors.white),
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: NetworkImage(
-                  widget.messageModel.imageUrl,
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+          CustomNetworkImage(
+            height: 37.sp,
+            width: 37.sp,
+            urlToImage: widget.messageModel.imageUrl,
+            shape: BoxShape.circle,
           ),
           SizedBox(
             width: 10.sp,
@@ -44,12 +36,12 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
                 Text(
                   widget.messageModel.fullName,
                   style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
-                const SizedBox(
-                  height: 6,
+                SizedBox(
+                  height: 2.sp,
                 ),
                 Text(
                   widget.messageModel.message,
@@ -57,7 +49,7 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
                   textAlign: TextAlign.justify,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
