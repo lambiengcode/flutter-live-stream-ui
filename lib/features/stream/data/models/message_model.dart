@@ -61,6 +61,11 @@ class MessageModel {
   int get hashCode => imageUrl.hashCode ^ fullName.hashCode ^ message.hashCode;
 }
 
+MessageModel pinMessageFake = MessageModel(
+    imageUrl:
+        'https://my-test-11.slatic.net/p/96b9cce35f664d67479547587686742a.jpg',
+    fullName: 'Lord Busuz',
+    message: 'Các bạn xem stream vui vẻ');
 List<MessageModel> listMessageFake = [
   MessageModel(
       imageUrl:

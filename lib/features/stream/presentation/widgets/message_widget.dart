@@ -24,6 +24,7 @@ class _MessageWidgetState extends State<MessageWidget> {
               itemBuilder: (context, index) {
                 return AuthorMessageCard(
                   messageModel: listMessageFake[index],
+                  pin: false,
                 );
               },
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class ViewerWidget extends StatefulWidget {
   const ViewerWidget({Key? key}) : super(key: key);
@@ -21,6 +22,7 @@ class _ViewerWidgetState extends State<ViewerWidget> {
       ),
       child: Center(
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
               Icons.remove_red_eye_outlined,
@@ -28,10 +30,10 @@ class _ViewerWidgetState extends State<ViewerWidget> {
               size: 14.sp,
             ),
             SizedBox(
-              width: 6.sp,
+              width: 2.sp,
             ),
             Text(
-              '1826',
+              formatNumberIndex(54555555555),
               style: TextStyle(fontSize: 11.sp, color: Colors.white),
             ),
           ],

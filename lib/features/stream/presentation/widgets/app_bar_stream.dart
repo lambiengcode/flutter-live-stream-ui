@@ -8,30 +8,18 @@ class AppBarStream extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(100.0.sp),
-          child: Container(
-            width: 32.sp,
-            height: 32.sp,
-            color: Colors.white.withOpacity(0.25),
-            child: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            ),
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 25.sp),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const FullnameLiveWidget(),
+          SizedBox(
+            width: 6.sp,
           ),
-        ),
-        SizedBox(
-          width: 10.sp,
-        ),
-        const FullnameLiveWidget(),
-        SizedBox(
-          width: 18.sp,
-        ),
-        const ViewerWidget(),
-      ],
+          const ViewerWidget(),
+        ],
+      ),
     );
   }
 }

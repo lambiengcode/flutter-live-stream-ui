@@ -14,7 +14,7 @@ class _StreamScreenState extends State<StreamScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -28,7 +28,7 @@ class _StreamScreenState extends State<StreamScreen> {
             ),
             Padding(
                 padding:
-                    EdgeInsets.symmetric(vertical: 30.sp, horizontal: 16.sp),
+                    EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
                 child: const AppBarStream()),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.sp)
