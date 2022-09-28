@@ -1,61 +1,69 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class UserModel {
   final String fullName;
   final String urlToImage;
+  final bool isLiveStream;
   UserModel({
     required this.fullName,
     required this.urlToImage,
+    this.isLiveStream = false,
   });
 
   UserModel copyWith({
     String? fullName,
     String? urlToImage,
+    bool? isLiveStream,
   }) {
     return UserModel(
       fullName: fullName ?? this.fullName,
       urlToImage: urlToImage ?? this.urlToImage,
+      isLiveStream: isLiveStream ?? this.isLiveStream,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return {
+    return <String, dynamic>{
       'fullName': fullName,
       'urlToImage': urlToImage,
+      'isLiveStream': isLiveStream,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      fullName: map['fullName'] ?? '',
-      urlToImage: map['urlToImage'] ?? '',
+      fullName: map['fullName'] as String,
+      urlToImage: map['urlToImage'] as String,
+      isLiveStream: map['isLiveStream'] as bool,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source));
+      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() =>
-      'UserModel(fullName: $fullName, urlToImage: $urlToImage)';
+      'UserModel(fullName: $fullName, urlToImage: $urlToImage, isLiveStream: $isLiveStream)';
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(covariant UserModel other) {
     if (identical(this, other)) return true;
 
-    return other is UserModel &&
-        other.fullName == fullName &&
-        other.urlToImage == urlToImage;
+    return other.fullName == fullName &&
+        other.urlToImage == urlToImage &&
+        other.isLiveStream == isLiveStream;
   }
 
   @override
-  int get hashCode => fullName.hashCode ^ urlToImage.hashCode;
+  int get hashCode =>
+      fullName.hashCode ^ urlToImage.hashCode ^ isLiveStream.hashCode;
 }
 
 List<UserModel> listUserFake = [
-  UserModel(fullName: 'Brody', urlToImage: urlUserFake3),
+  UserModel(fullName: 'Brody', urlToImage: urlUserFake3, isLiveStream: true),
   UserModel(fullName: 'Johnny', urlToImage: urlUserFake2),
   UserModel(fullName: 'Caroline', urlToImage: urlUserFake),
   UserModel(fullName: 'Jerry', urlToImage: urlUserFake2),

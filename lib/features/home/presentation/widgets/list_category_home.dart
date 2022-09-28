@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/category_model.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/category_card.dart';
 
@@ -15,26 +16,55 @@ class _ListCategoryHomeState extends State<ListCategoryHome> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 37.sp,
-      width: double.infinity,
-      child: ListView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16.sp),
-        itemCount: listCategoryFake.length,
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: ((context, index) {
-          return CategoryCard(
-            categoryModel: listCategoryFake[index],
-            isCheck: _currentIndex == index,
-            onTap: () {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-          );
-        }),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.sp),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Categories',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13.sp,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                'View all',
+                style: TextStyle(
+                  color: colorPurple,
+                  fontSize: 11.sp,
+                ),
+              ),
+            ],
+          ),
+        ),
+        SizedBox(height: 12.sp),
+        SizedBox(
+          height: 30.sp,
+          width: double.infinity,
+          child: ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 16.sp),
+            itemCount: listCategoryFake.length,
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: ((context, index) {
+              return CategoryCard(
+                categoryModel: listCategoryFake[index],
+                isCheck: _currentIndex == index,
+                onTap: () {
+                  setState(() {
+                    _currentIndex = index;
+                  });
+                },
+              );
+            }),
+          ),
+        ),
+      ],
     );
   }
 }

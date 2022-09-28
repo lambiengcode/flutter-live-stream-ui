@@ -23,10 +23,10 @@ class CategoryCard extends StatelessWidget {
         margin: EdgeInsets.only(right: 10.sp),
         padding: EdgeInsets.symmetric(
           horizontal: 10.sp,
-          vertical: 3.sp,
+          vertical: 2.sp,
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.sp),
+          borderRadius: BorderRadius.circular(30.sp),
           color: isCheck ? colorPurple : fCL,
         ),
         child: Row(
