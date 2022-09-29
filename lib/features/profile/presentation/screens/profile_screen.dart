@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
+import 'package:streamskit_mobile/features/profile/data/list_live_card_model.dart';
+import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/circle_icon.dart';
-import 'package:streamskit_mobile/features/profile/presentation/widgets/index_info_user.dart';
-import 'package:streamskit_mobile/features/profile/presentation/widgets/live_card_profile.dart';
+import 'package:streamskit_mobile/features/profile/presentation/widgets/details_info_live_user.dart';
+import 'package:streamskit_mobile/features/profile/presentation/widgets/gribview_live_card.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -16,7 +16,42 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _ProfileScreenState extends State<ProfileScreen>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  ListLiveCardModel listLiveStream = ListLiveCardModel(
+    type: 1,
+    listLiveCardModel: [
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://cyberxanh.vn/wp-content/uploads/2021/11/top-20-mau-thiet-ke-phong-livestream-game-cuc-dinh-33-1038x800.jpg",
+          numberViewer: 10000,
+          statusLive: true),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://st.nhipcaudautu.vn/staticFile/Subject/2019/01/03/livestream-game_31517638.jpg",
+          numberViewer: 78421,
+          statusLive: true),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://photo-cms-tinnhanhchungkhoan.zadn.vn/w660/Uploaded/2022/gtnwae/2022_03_14/z-a-5520.jpg",
+          numberViewer: 78421,
+          statusLive: false),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://ecdn.game4v.com/g4v-content/uploads/2021/05/stream-1.jpg",
+          numberViewer: 78421,
+          statusLive: false)
+    ],
+  );
   static const listFieldLive = [
     "Dota 2",
     "Mobile Legend",
@@ -38,19 +73,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
       listFields: listFieldLive);
   @override
   void initState() {
+    _tabController = TabController(length: 4, vsync: this);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 2,
+      initialIndex: 1,
+      length: 4,
       child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          leadingWidth: 62.sp,
-          backgroundColor: Theme.of(context).backgroundColor,
+          elevation: 0,
+          leadingWidth: 80.sp,
+          backgroundColor: Colors.transparent,
           leading: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.sp),
+            padding: EdgeInsets.symmetric(horizontal: 24.sp),
             child: CircleIcon(
               onTap: () {},
               icon: PhosphorIcons.arrow_left,
@@ -58,7 +98,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           actions: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.sp),
+              padding: EdgeInsets.symmetric(horizontal: 24.sp),
               child: CircleIcon(
                 onTap: () {},
                 icon: PhosphorIcons.dots_three,
@@ -66,196 +106,91 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-        body: Container(
-          color: Theme.of(context).backgroundColor,
-          padding: EdgeInsets.symmetric(horizontal: 16.sp),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                DetailInfoLiveUserWidget(user: user),
-                SizedBox(height: 12.sp),
-                Container(
-                  height: 55.sp,
-                  decoration: BoxDecoration(
-                    color: Colors.grey.shade900,
-                    borderRadius: BorderRadius.circular(12.sp),
-                  ),
+        body: NestedScrollView(
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                  child: DetailInfoLiveUserWidget(user: user),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: PreferredSize(
+                  preferredSize: const Size.fromHeight(0),
                   child: Padding(
-                    padding: EdgeInsets.all(5.sp),
+                    padding: EdgeInsets.symmetric(horizontal: 16.sp),
                     child: TabBar(
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      isScrollable: true,
-                      indicator: BoxDecoration(
-                        color: colorPurple,
-                        borderRadius: BorderRadius.circular(10.sp),
+                      onTap: (_) {},
+                      overlayColor:
+                          MaterialStateProperty.all<Color>(Colors.transparent),
+                      indicatorSize: TabBarIndicatorSize.label,
+                      automaticIndicatorColorAdjustment: false,
+                      indicatorColor: mGB,
+                      unselectedLabelStyle: TextStyle(
+                        color: mGB,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
                       ),
+                      labelStyle: TextStyle(
+                        color: mGB,
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      isScrollable: true,
+                      controller: _tabController,
                       tabs: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.sp),
-                          child: Tab(
-                            child: Text(
-                              "Live Stream",
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColorLight,
-                                fontSize: 13.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
+                        Tab(
+                          child: SizedBox(
+                            width: 20.w,
+                            child: const Text("Live Stream"),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.sp),
-                          child: Tab(
-                              child: Text(
-                            "Stream Likes",
-                            style: TextStyle(
-                              color: Theme.of(context).primaryColorLight,
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          )),
+                        Tab(
+                          child: SizedBox(
+                            width: 16.w,
+                            child: const Text("Last Live"),
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            width: 10.w,
+                            child: const Text("Star"),
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            width: 10.w,
+                            child: const Text("Posts"),
+                          ),
                         ),
                       ],
                     ),
                   ),
                 ),
-                SizedBox(height: 12.sp),
-                GridView.count(
-                  shrinkWrap: true,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 15.sp,
-                  childAspectRatio: 0.7,
-                  physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 20.sp,
-                  children: List.generate(
-                    6,
-                    (index) => LiveCardProflie(
-                        imageLive:
-                            "https://i.pinimg.com/564x/d3/d5/d8/d3d5d82fecda156b3d58beabc407f766.jpg",
-                        viewerLive: 85546,
-                        categoryLive: "Game",
-                        onTap: () {}),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class DetailInfoLiveUserWidget extends StatelessWidget {
-  final UserModel user;
-  const DetailInfoLiveUserWidget({
-    Key? key,
-    required this.user,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  width: 2,
-                  color: colorBorderAvatar,
-                ),
-                shape: BoxShape.circle,
               ),
-              child: Padding(
-                padding: EdgeInsets.all(3.sp),
-                child: CircleAvatar(
-                  radius: 25.sp,
-                  backgroundImage: NetworkImage(
-                    user.urlToImage,
-                  ),
-                ),
-              ),
-            ),
-            IndexInfoUser(
-              titleIndex: "Posts",
-              numberIndex: user.posts!,
-            ),
-            IndexInfoUser(
-              titleIndex: "Following",
-              numberIndex: user.followings!,
-            ),
-            IndexInfoUser(
-              titleIndex: "Followers",
-              numberIndex: user.followers!,
-            ),
-          ],
-        ),
-        SizedBox(height: 5.sp),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.sp),
-          child: Row(
+            ];
+          },
+          body: TabBarView(
+            physics: const BouncingScrollPhysics(),
+            controller: _tabController,
             children: [
-              Container(
-                constraints: BoxConstraints(maxWidth: 80.w),
-                child: Text(
-                  user.fullName,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColorLight,
-                    fontSize: 14.sp,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[0],
               ),
-              SizedBox(width: 2.sp),
-              Icon(
-                PhosphorIcons.circle_wavy_check_fill,
-                size: 15.sp,
-                color: Theme.of(context).primaryColor,
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[1],
+              ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[2],
+              ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[3],
               ),
             ],
           ),
         ),
-        Linkify(
-          onOpen: (link) async {},
-          text: user.description!,
-          maxLines: 3,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.justify,
-          style: TextStyle(
-            color: Theme.of(context).primaryColorLight,
-            fontSize: 12.sp,
-            height: 1.4,
-          ),
-          linkStyle: TextStyle(
-            color: Theme.of(context).primaryColor,
-            decoration: TextDecoration.underline,
-          ),
-        ),
-        SizedBox(height: 12.sp),
-        Wrap(
-          spacing: 5.sp,
-          runSpacing: -5.sp,
-          children: List.generate(
-            user.listFields!.length,
-            (index) => Chip(
-              backgroundColor: Colors.black12,
-              label: Text(
-                user.listFields![index],
-                style: TextStyle(
-                  color: Theme.of(context).primaryColorLight,
-                  fontSize: 13,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
