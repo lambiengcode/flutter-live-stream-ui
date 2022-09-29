@@ -4,7 +4,6 @@ import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/data/models/message_model.dart';
 import 'package:streamskit_mobile/features/stream/presentation/widgets/author_message_card.dart';
-import 'package:streamskit_mobile/features/stream/presentation/widgets/message_widget.dart';
 
 class CommentWidgets extends StatefulWidget {
   const CommentWidgets({Key? key}) : super(key: key);
@@ -24,8 +23,34 @@ class _CommentWidgetsState extends State<CommentWidgets> {
           Expanded(
             child: Column(
               children: [
-                const Expanded(
-                  child: MessageWidget(),
+                Expanded(
+                  child: ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return const LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: <Color>[
+                          Colors.transparent,
+                          Colors.white,
+                          Colors.transparent
+                        ],
+                      ).createShader(bounds);
+                    },
+                    blendMode: BlendMode.dstIn,
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 8.sp),
+                      height: 280.sp,
+                      child: ListView.builder(
+                        itemCount: listMessageFake.length,
+                        itemBuilder: (context, index) {
+                          return AuthorMessageCard(
+                            messageModel: listMessageFake[index],
+                            pin: false,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
                 ),
                 AuthorMessageCard(
                   messageModel: pinMessageFake,
