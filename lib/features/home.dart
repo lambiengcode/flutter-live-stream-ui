@@ -4,11 +4,11 @@ import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
-import 'package:streamskit_mobile/features/chat/presentation/screens/chat_page.dart';
+import 'package:streamskit_mobile/features/chat/presentation/screens/chat_screen.dart';
 import 'package:streamskit_mobile/features/home/presentation/screens/home_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
-import 'package:streamskit_mobile/features/search/presentation/page/search_page.dart';
-import 'package:streamskit_mobile/features/stream/presentation/page/stream_page.dart';
+import 'package:streamskit_mobile/features/search/presentation/screens/search_screen.dart';
+import 'package:streamskit_mobile/features/stream/presentation/screens/stream_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,9 +20,9 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Widget> _tabs = [
     const HomeScreen(),
-    const SearchPage(),
-    const StreamPage(),
-    const ChatPage(),
+    const SearchScreen(),
+    const StreamScreen(),
+    const ChatScreen(),
     const ProfileScreen(),
   ];
   int _currentIndex = 0;
@@ -40,6 +40,32 @@ class _HomeState extends State<Home> {
           _tabs[_currentIndex],
           Align(
             alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.only(bottom: 30.sp),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(100.sp),
+                ),
+                child: BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 5, sigmaY: 10),
+                  child: Container(
+                    padding: EdgeInsets.all(8.sp),
+                    margin: EdgeInsets.all(8.sp),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.black.withOpacity(0.3),
+                    ),
+                    child: SizedBox(
+                      height: 30.sp,
+                      width: 30.sp,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(20.sp),
@@ -49,7 +75,7 @@ class _HomeState extends State<Home> {
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 16.sp),
                   height: 70.sp,
-                  color: Colors.transparent,
+                  color: Colors.black.withOpacity(0.3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -63,11 +89,7 @@ class _HomeState extends State<Home> {
                         activeIcon: PhosphorIcons.magnifyingGlassBold,
                         index: 1,
                       ),
-                      _buildItemBottomBar(
-                        inActiveIcon: PhosphorIcons.videoCameraLight,
-                        activeIcon: PhosphorIcons.videoCameraFill,
-                        index: 2,
-                      ),
+                      const SizedBox(),
                       _buildItemBottomBar(
                         inActiveIcon: PhosphorIcons.chatTeardropDotsLight,
                         activeIcon: PhosphorIcons.chatTeardropDotsFill,
@@ -84,6 +106,29 @@ class _HomeState extends State<Home> {
               ),
             ),
           ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: TouchableOpacity(
+              onTap: () {
+                setState(() {
+                  _currentIndex = 2;
+                });
+              },
+              child: Container(
+                padding: EdgeInsets.all(13.sp),
+                margin: EdgeInsets.only(bottom: 38.sp),
+                decoration: BoxDecoration(
+                  color: colorPink,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  PhosphorIcons.plusBold,
+                  size: 20.sp,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -103,7 +148,7 @@ class _HomeState extends State<Home> {
       child: Container(
         padding: EdgeInsets.all(10.sp),
         decoration: BoxDecoration(
-          color: index == _currentIndex ? colorPurple : Colors.transparent,
+          color: index == _currentIndex ? colorPink : Colors.transparent,
           borderRadius: BorderRadius.circular(15.sp),
         ),
         child: Icon(

@@ -17,13 +17,13 @@ class PlaceHolderImage extends StatelessWidget {
     return shape == BoxShape.circle
         ? FadeShimmer.round(
             size: height,
-            highlightColor: colorPurple,
+            highlightColor: colorPink,
             baseColor: mCM,
           )
         : FadeShimmer(
             width: width,
             height: height,
-            highlightColor: colorPurple,
+            highlightColor: colorPink,
             baseColor: mCM,
           );
   }
