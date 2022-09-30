@@ -9,11 +9,13 @@ class AppBarStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 25.sp),
+      padding: EdgeInsets.symmetric(vertical: 16.sp),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const FullnameLiveWidget(),
+          const Expanded(
+            child: FullnameLiveWidget(),
+          ),
           SizedBox(
             width: 6.sp,
           ),

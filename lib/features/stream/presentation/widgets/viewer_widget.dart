@@ -13,9 +13,8 @@ class _ViewerWidgetState extends State<ViewerWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(4.sp),
-      padding: EdgeInsets.symmetric(horizontal: 6.sp),
-      height: 24.sp,
+      padding: EdgeInsets.symmetric(horizontal: 4.sp, vertical: 4),
+      height: 30.sp,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100.sp),
         color: Colors.white.withOpacity(0.25),
@@ -33,8 +32,25 @@ class _ViewerWidgetState extends State<ViewerWidget> {
               width: 2.sp,
             ),
             Text(
-              formatNumberIndex(54555555555),
+              formatNumberIndex(55411),
               style: TextStyle(fontSize: 11.sp, color: Colors.white),
+            ),
+            SizedBox(
+              width: 2.6.sp,
+            ),
+            Container(
+              height: 16.sp,
+              padding: EdgeInsets.symmetric(horizontal: 4.8.sp),
+              decoration: BoxDecoration(
+                color: Colors.red.shade700,
+                borderRadius: BorderRadius.circular(18.sp),
+              ),
+              child: Center(
+                child: Text(
+                  'Live',
+                  style: TextStyle(fontSize: 10.sp, color: Colors.white),
+                ),
+              ),
             ),
           ],
         ),

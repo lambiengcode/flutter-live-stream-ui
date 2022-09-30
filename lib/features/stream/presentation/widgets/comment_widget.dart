@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:provider/provider.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/data/models/message_model.dart';
 import 'package:streamskit_mobile/features/stream/presentation/widgets/author_message_card.dart';
+import 'package:streamskit_mobile/features/stream/presentation/widgets/floating_hearts.dart';
+import 'package:streamskit_mobile/features/stream/provider/hearts_provider.dart';
 
 class CommentWidgets extends StatefulWidget {
   const CommentWidgets({Key? key}) : super(key: key);
@@ -16,7 +19,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250.sp,
+      height: 350.sp,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
@@ -32,7 +35,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                         colors: <Color>[
                           Colors.transparent,
                           Colors.white,
-                          Colors.transparent
+                          Colors.white,
                         ],
                       ).createShader(bounds);
                     },
@@ -41,6 +44,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                       padding: EdgeInsets.symmetric(vertical: 8.sp),
                       height: 280.sp,
                       child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
                         itemCount: listMessageFake.length,
                         itemBuilder: (context, index) {
                           return AuthorMessageCard(
@@ -66,20 +70,20 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                         padding: EdgeInsets.only(right: 4.sp),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100.sp),
-                          color: Colors.black.withOpacity(0.20),
+                          color: Colors.grey.withOpacity(0.28),
                         ),
                         child: TextField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
                             hintStyle:
-                                TextStyle(fontSize: 11.sp, color: Colors.white),
+                                TextStyle(fontSize: 11.sp, color: Colors.grey),
                             hintText: 'Comment...',
                             contentPadding: EdgeInsets.all(12.sp),
                             suffixIcon: Container(
                               // padding: EdgeInsets.all(4.sp),
                               margin: EdgeInsets.all(4.sp),
-                              width: 10.sp,
-                              height: 10.sp,
+                              width: 12.sp,
+                              height: 12.sp,
                               decoration: BoxDecoration(
                                   color: Colors.purple.shade400,
                                   borderRadius: BorderRadius.circular(100.sp)),
@@ -101,12 +105,12 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                         width: 40.sp,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100.sp),
-                          color: Colors.black.withOpacity(0.20),
+                          color: Colors.grey.withOpacity(0.28),
                         ),
                         child: Icon(
                           Icons.share_outlined,
                           color: Colors.white,
-                          size: 16.0.sp,
+                          size: 20.0.sp,
                         ),
                       ),
                     ),
@@ -121,26 +125,28 @@ class _CommentWidgetsState extends State<CommentWidgets> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TouchableOpacity(
-                    onTap: () {},
-                    child: Container(
-                      height: 40.sp,
-                      width: 40.sp,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100.sp),
-                        color: Colors.black.withOpacity(0.20),
-                      ),
-                      child: Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                        size: 16.0.sp,
-                      ),
-                    ),
+              const Expanded(
+                child: FloatingHeartsWidget(),
+              ),
+              TouchableOpacity(
+                onTap: () {
+                  FloatingHeartsProvider floatingHeartsProvider =
+                      context.read<FloatingHeartsProvider>();
+                  floatingHeartsProvider.addHeart();
+                },
+                child: Container(
+                  height: 40.sp,
+                  width: 40.sp,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.sp),
+                    color: Colors.grey.withOpacity(0.28),
                   ),
-                ],
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.red,
+                    size: 24.0.sp,
+                  ),
+                ),
               ),
             ],
           ),

@@ -24,7 +24,7 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
       margin: EdgeInsets.only(bottom: 5.sp),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(100.sp),
-        color: Colors.white.withOpacity(0.20),
+        color: Colors.white.withOpacity(0.10),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -72,7 +72,7 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
                   width: 30.sp,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100.sp),
-                    color: Colors.grey.withOpacity(0.20),
+                    color: Colors.grey.withOpacity(0.28),
                   ),
                   child: Icon(
                     PhosphorIcons.pushPinFill,

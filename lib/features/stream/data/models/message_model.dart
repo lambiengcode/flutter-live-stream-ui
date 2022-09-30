@@ -74,6 +74,11 @@ List<MessageModel> listMessageFake = [
       message: 'Hát gì đi bạn ei :>'),
   MessageModel(
       imageUrl:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTywaXYb5-6bjevxgw_cD3bu0vcyW3J45g_w&usqp=CAU',
+      fullName: 'Tuấn 5 củ',
+      message: 'Liên minh ko em!!! :))'),
+  MessageModel(
+      imageUrl:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFjg_69eVjIeli08uXE09Z2ddWue-GINy2qg&usqp=CAU',
       fullName: 'Trung Ly Đeng',
       message: 'Đấm nhau khum'),
@@ -82,6 +87,11 @@ List<MessageModel> listMessageFake = [
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTywaXYb5-6bjevxgw_cD3bu0vcyW3J45g_w&usqp=CAU',
       fullName: 'Tuấn 5 củ',
       message: 'Liên minh ko em!!! :))'),
+  MessageModel(
+      imageUrl:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFjg_69eVjIeli08uXE09Z2ddWue-GINy2qg&usqp=CAU',
+      fullName: 'Trung Ly Muội',
+      message: 'Đấm nhau khum'),
   MessageModel(
       imageUrl:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTywaXYb5-6bjevxgw_cD3bu0vcyW3J45g_w&usqp=CAU',
