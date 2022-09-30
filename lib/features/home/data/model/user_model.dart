@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
@@ -11,6 +12,7 @@ class UserModel {
   int? followings;
   int? followers;
   List<String>? listFields;
+  final bool isLiveStream;
   UserModel({
     this.id,
     required this.fullName,
@@ -19,7 +21,8 @@ class UserModel {
     this.posts,
     this.followings,
     this.followers,
-     this.listFields,
+    this.listFields,
+    this.isLiveStream = false,
   });
 
   UserModel copyWith({
@@ -31,6 +34,7 @@ class UserModel {
     int? followings,
     int? followers,
     List<String>? listFields,
+    bool? isLiveStream,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -41,6 +45,7 @@ class UserModel {
       followings: followings ?? this.followings,
       followers: followers ?? this.followers,
       listFields: listFields ?? this.listFields,
+      isLiveStream: isLiveStream ?? this.isLiveStream,
     );
   }
 
@@ -54,19 +59,21 @@ class UserModel {
       'followings': followings,
       'followers': followers,
       'listFields': listFields,
+      'isLiveStream': isLiveStream,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'] ?? '',
+      id: map['id'],
       fullName: map['fullName'] ?? '',
       urlToImage: map['urlToImage'] ?? '',
-      description: map['description'] ?? '',
-      posts: map['posts']?.toInt() ?? 0,
-      followings: map['followings']?.toInt() ?? 0,
-      followers: map['followers']?.toInt() ?? 0,
+      description: map['description'],
+      posts: map['posts']?.toInt(),
+      followings: map['followings']?.toInt(),
+      followers: map['followers']?.toInt(),
       listFields: List<String>.from(map['listFields']),
+      isLiveStream: map['isLiveStream'] ?? false,
     );
   }
 
@@ -77,7 +84,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, urlToImage: $urlToImage, description: $description, posts: $posts, followings: $followings, followers: $followers, listFields: $listFields)';
+    return 'UserModel(id: $id, fullName: $fullName, urlToImage: $urlToImage, description: $description, posts: $posts, followings: $followings, followers: $followers, listFields: $listFields, isLiveStream: $isLiveStream)';
   }
 
   @override
@@ -92,7 +99,8 @@ class UserModel {
         other.posts == posts &&
         other.followings == followings &&
         other.followers == followers &&
-        listEquals(other.listFields, listFields);
+        listEquals(other.listFields, listFields) &&
+        other.isLiveStream == isLiveStream;
   }
 
   @override
@@ -104,12 +112,13 @@ class UserModel {
         posts.hashCode ^
         followings.hashCode ^
         followers.hashCode ^
-        listFields.hashCode;
+        listFields.hashCode ^
+        isLiveStream.hashCode;
   }
 }
 
 List<UserModel> listUserFake = [
-  UserModel(fullName: 'Brody', urlToImage: urlUserFake3),
+  UserModel(fullName: 'Brody', urlToImage: urlUserFake3, isLiveStream: true),
   UserModel(fullName: 'Johnny', urlToImage: urlUserFake2),
   UserModel(fullName: 'Caroline', urlToImage: urlUserFake),
   UserModel(fullName: 'Jerry', urlToImage: urlUserFake2),

@@ -71,6 +71,7 @@ class CustomNetworkImage extends StatelessWidget {
                     height: height ?? width!,
                     width: height ?? width!,
                     shape: shape,
+                    borderRadius: borderRadius,
                   ),
                 ),
             errorWidget: (context, url, error) =>

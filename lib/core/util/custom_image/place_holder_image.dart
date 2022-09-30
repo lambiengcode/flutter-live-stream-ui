@@ -6,25 +6,28 @@ class PlaceHolderImage extends StatelessWidget {
   final double height;
   final double width;
   final BoxShape shape;
+  final BorderRadiusGeometry? borderRadius;
   const PlaceHolderImage({
     Key? key,
     required this.height,
     required this.width,
     required this.shape,
+    required this.borderRadius,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return shape == BoxShape.circle
         ? FadeShimmer.round(
             size: height,
-            highlightColor: colorPurple,
+            highlightColor: colorPink,
             baseColor: mCM,
           )
         : FadeShimmer(
             width: width,
             height: height,
-            highlightColor: colorPurple,
+            highlightColor: colorPink,
             baseColor: mCM,
+            borderRadius: borderRadius,
           );
   }
 }
