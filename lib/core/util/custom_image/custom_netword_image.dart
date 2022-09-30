@@ -48,7 +48,7 @@ class CustomNetworkImage extends StatelessWidget {
             imageUrl: urlToImage!,
             imageBuilder: (context, imageProvider) => Container(
               height: height ?? width!,
-              width: height ?? width!,
+              width: width ?? height!,
               margin: margin,
               decoration: BoxDecoration(
                 shape: shape,

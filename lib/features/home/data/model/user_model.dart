@@ -1,65 +1,120 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
 class UserModel {
+  String? id;
   final String fullName;
   final String urlToImage;
+  String? description;
+  int? posts;
+  int? followings;
+  int? followers;
+  List<String>? listFields;
   final bool isLiveStream;
   UserModel({
+    this.id,
     required this.fullName,
     required this.urlToImage,
+    this.description,
+    this.posts,
+    this.followings,
+    this.followers,
+    this.listFields,
     this.isLiveStream = false,
   });
 
   UserModel copyWith({
+    String? id,
     String? fullName,
     String? urlToImage,
+    String? description,
+    int? posts,
+    int? followings,
+    int? followers,
+    List<String>? listFields,
     bool? isLiveStream,
   }) {
     return UserModel(
+      id: id ?? this.id,
       fullName: fullName ?? this.fullName,
       urlToImage: urlToImage ?? this.urlToImage,
+      description: description ?? this.description,
+      posts: posts ?? this.posts,
+      followings: followings ?? this.followings,
+      followers: followers ?? this.followers,
+      listFields: listFields ?? this.listFields,
       isLiveStream: isLiveStream ?? this.isLiveStream,
     );
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return {
+      'id': id,
       'fullName': fullName,
       'urlToImage': urlToImage,
+      'description': description,
+      'posts': posts,
+      'followings': followings,
+      'followers': followers,
+      'listFields': listFields,
       'isLiveStream': isLiveStream,
     };
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      fullName: map['fullName'] as String,
-      urlToImage: map['urlToImage'] as String,
-      isLiveStream: map['isLiveStream'] as bool,
+      id: map['id'],
+      fullName: map['fullName'] ?? '',
+      urlToImage: map['urlToImage'] ?? '',
+      description: map['description'],
+      posts: map['posts']?.toInt(),
+      followings: map['followings']?.toInt(),
+      followers: map['followers']?.toInt(),
+      listFields: List<String>.from(map['listFields']),
+      isLiveStream: map['isLiveStream'] ?? false,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory UserModel.fromJson(String source) =>
-      UserModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      UserModel.fromMap(json.decode(source));
 
   @override
-  String toString() =>
-      'UserModel(fullName: $fullName, urlToImage: $urlToImage, isLiveStream: $isLiveStream)';
+  String toString() {
+    return 'UserModel(id: $id, fullName: $fullName, urlToImage: $urlToImage, description: $description, posts: $posts, followings: $followings, followers: $followers, listFields: $listFields, isLiveStream: $isLiveStream)';
+  }
 
   @override
-  bool operator ==(covariant UserModel other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other.fullName == fullName &&
+    return other is UserModel &&
+        other.id == id &&
+        other.fullName == fullName &&
         other.urlToImage == urlToImage &&
+        other.description == description &&
+        other.posts == posts &&
+        other.followings == followings &&
+        other.followers == followers &&
+        listEquals(other.listFields, listFields) &&
         other.isLiveStream == isLiveStream;
   }
 
   @override
-  int get hashCode =>
-      fullName.hashCode ^ urlToImage.hashCode ^ isLiveStream.hashCode;
+  int get hashCode {
+    return id.hashCode ^
+        fullName.hashCode ^
+        urlToImage.hashCode ^
+        description.hashCode ^
+        posts.hashCode ^
+        followings.hashCode ^
+        followers.hashCode ^
+        listFields.hashCode ^
+        isLiveStream.hashCode;
+  }
 }
 
 List<UserModel> listUserFake = [

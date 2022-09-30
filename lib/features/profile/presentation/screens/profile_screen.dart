@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
+import 'package:streamskit_mobile/features/profile/data/list_live_card_model.dart';
+import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/circle_icon.dart';
+import 'package:streamskit_mobile/features/profile/presentation/widgets/details_info_live_user.dart';
+import 'package:streamskit_mobile/features/profile/presentation/widgets/gribview_live_card.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -11,8 +16,43 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
-  List<String> listFieldLive = [
+class _ProfileScreenState extends State<ProfileScreen>
+    with TickerProviderStateMixin {
+  late TabController _tabController;
+  ListLiveCardModel listLiveStream = ListLiveCardModel(
+    type: 1,
+    listLiveCardModel: [
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://cyberxanh.vn/wp-content/uploads/2021/11/top-20-mau-thiet-ke-phong-livestream-game-cuc-dinh-33-1038x800.jpg",
+          numberViewer: 10000,
+          statusLive: true),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://st.nhipcaudautu.vn/staticFile/Subject/2019/01/03/livestream-game_31517638.jpg",
+          numberViewer: 78421,
+          statusLive: true),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://photo-cms-tinnhanhchungkhoan.zadn.vn/w660/Uploaded/2022/gtnwae/2022_03_14/z-a-5520.jpg",
+          numberViewer: 78421,
+          statusLive: false),
+      LiveCardModel(
+          id: "",
+          idAccount: "",
+          image:
+              "https://ecdn.game4v.com/g4v-content/uploads/2021/05/stream-1.jpg",
+          numberViewer: 78421,
+          statusLive: false)
+    ],
+  );
+  static const listFieldLive = [
     "Dota 2",
     "Mobile Legend",
     "LOL",
@@ -20,211 +60,132 @@ class _ProfileScreenState extends State<ProfileScreen> {
     "Rise of Kingdom",
     "Genshin Impact"
   ];
+  final UserModel user = UserModel(
+      id: "",
+      urlToImage:
+          "https://donoithatdanang.com/wp-content/uploads/2021/11/mang-hinh-khoa-cute-08.jpg",
+      fullName: "Tony Tony Chopper",
+      description:
+          "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM",
+      posts: 1000,
+      followers: 9400,
+      followings: 8543337121,
+      listFields: listFieldLive);
+  @override
+  void initState() {
+    _tabController = TabController(length: 4, vsync: this);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black12,
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 24.sp).add(
-          EdgeInsets.only(top: 50.sp),
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 4,
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: AppBar(
+          elevation: 0,
+          leadingWidth: 80.sp,
+          backgroundColor: Colors.transparent,
+          leading: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.sp),
+            child: CircleIcon(
+              onTap: () {},
+              icon: PhosphorIcons.arrow_left,
+            ),
+          ),
+          actions: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.sp),
+              child: CircleIcon(
+                onTap: () {},
+                icon: PhosphorIcons.dots_three,
+              ),
+            ),
+          ],
         ),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: 40,
-                child: Row(
-                  children: [
-                    CircleIcon(
-                      onTap: () {
-                        // print("back");
-                      },
-                      icon: PhosphorIcons.arrow_left,
-                    ),
-                    const Spacer(),
-                    CircleIcon(
-                      onTap: () {
-                        // print("show");
-                      },
-                      icon: PhosphorIcons.dots_three,
-                    ),
-                  ],
+        body: NestedScrollView(
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                  child: DetailInfoLiveUserWidget(user: user),
                 ),
               ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: const Color(0xff3e455b),
+              SliverToBoxAdapter(
+                child: PreferredSize(
+                  preferredSize: const Size.fromHeight(0),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                    child: TabBar(
+                      onTap: (_) {},
+                      overlayColor:
+                          MaterialStateProperty.all<Color>(Colors.transparent),
+                      indicatorSize: TabBarIndicatorSize.label,
+                      automaticIndicatorColorAdjustment: false,
+                      indicatorColor: mGB,
+                      unselectedLabelStyle: TextStyle(
+                        color: mGB,
+                        fontSize: 10.sp,
+                        fontWeight: FontWeight.w500,
                       ),
-                      shape: BoxShape.circle,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(
-                          "https://donoithatdanang.com/wp-content/uploads/2021/11/mang-hinh-khoa-cute-08.jpg",
-                        ),
+                      labelStyle: TextStyle(
+                        color: mGB,
+                        fontSize: 11.sp,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ),
-                  ),
-                  const IndexInfoUser(
-                    titleIndex: "Posts",
-                    numberIndex: 18,
-                  ),
-                  const IndexInfoUser(
-                    titleIndex: "Following",
-                    numberIndex: 9,
-                  ),
-                  const IndexInfoUser(
-                    titleIndex: "Followers",
-                    numberIndex: 2000,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Row(
-                  children: [
-                    Container(
-                      constraints: const BoxConstraints(maxWidth: 400),
-                      child: const Text(
-                        "Tony Tony Chopper",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 5),
-                    const Icon(
-                      PhosphorIcons.circle_wavy_check_fill,
-                      size: 18.0,
-                      color: Color(0xff3689e2),
-                    ),
-                  ],
-                ),
-              ),
-              Linkify(
-                onOpen: (link) async {},
-                text:
-                    "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM",
-                maxLines: 3,
-                overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.justify,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
-                  height: 1.4,
-                ),
-                linkStyle: const TextStyle(
-                  color: Colors.blue,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Wrap(
-                spacing: 10,
-                children: List.generate(
-                  listFieldLive.length,
-                  (index) => Chip(
-                    backgroundColor: Colors.black.withOpacity(0.85),
-                    label: Text(
-                      listFieldLive[index],
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.9),
-                        fontSize: 13,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 10),
-              GridView.count(
-                shrinkWrap: true,
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                childAspectRatio: 0.7,
-                physics: const NeverScrollableScrollPhysics(),
-                mainAxisSpacing: 30,
-                children: List.generate(
-                  6,
-                  (index) => SizedBox(
-                    height: 200,
-                    child: Stack(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.rectangle,
-                            borderRadius: BorderRadius.circular(20),
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                  "https://i.pinimg.com/564x/d3/d5/d8/d3d5d82fecda156b3d58beabc407f766.jpg",
-                                ),
-                                fit: BoxFit.fill),
+                      isScrollable: true,
+                      controller: _tabController,
+                      tabs: [
+                        Tab(
+                          child: SizedBox(
+                            width: 20.w,
+                            child: const Text("Live Stream"),
                           ),
                         ),
-                        Positioned(
-                          right: 5,
-                          top: 0,
-                          child: Chip(
-                            label: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
-                              child: Text(
-                                "Game",
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.9),
-                                  fontSize: 13,
-                                ),
-                              ),
-                            ),
-                            backgroundColor: Colors.red.shade400,
+                        Tab(
+                          child: SizedBox(
+                            width: 16.w,
+                            child: const Text("Last Live"),
                           ),
                         ),
-                        Positioned(
-                          right: 5,
-                          top: 45,
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            height: 30,
-                            width: 75,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white.withOpacity(0.4),
-                            ),
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  PhosphorIcons.eye,
-                                  size: 18,
-                                  color: Colors.white,
-                                ),
-                                const Spacer(),
-                                Text(
-                                  "120",
-                                  style: TextStyle(
-                                    color: Colors.white.withOpacity(0.9),
-                                    fontSize: 13,
-                                  ),
-                                )
-                              ],
-                            ),
+                        Tab(
+                          child: SizedBox(
+                            width: 10.w,
+                            child: const Text("Star"),
+                          ),
+                        ),
+                        Tab(
+                          child: SizedBox(
+                            width: 10.w,
+                            child: const Text("Posts"),
                           ),
                         ),
                       ],
                     ),
                   ),
                 ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            physics: const BouncingScrollPhysics(),
+            controller: _tabController,
+            children: [
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[0],
+              ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[1],
+              ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[2],
+              ),
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel[3],
               ),
             ],
           ),
@@ -234,47 +195,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 }
 
-class IndexInfoUser extends StatelessWidget {
-  final String titleIndex;
-  final int numberIndex;
-  const IndexInfoUser({
-    Key? key,
-    required this.titleIndex,
-    required this.numberIndex,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          formatNumberIndex(numberIndex),
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        const SizedBox(height: 5),
-        Text(
-          titleIndex,
-          style: TextStyle(
-            color: Colors.white.withOpacity(0.9),
-            fontSize: 13,
-          ),
-        ),
-      ],
-    );
+String formatNumberViewer(int number) {
+  if (number <= 0) return "0";
+  if (number < 950) {
+    return number.toString();
+  } else if (number >= 950 && number < 950000) {
+    return '${(number / 1000).toStringAsFixed(1)}K';
+  } else if (number >= 950000 && number < 950000000) {
+    return '${(number / 1000000).toStringAsFixed(1)}M';
+  } else {
+    return '${(number / 1000000000).toStringAsFixed(1)}B';
   }
 }
 
 String formatNumberIndex(int number) {
   if (number <= 0) return "0";
-  if (number < 10000) {
+  if (number < 9500) {
     return number.toString();
-  } else if (number >= 10000 && number < 1000000) {
+  } else if (number >= 9500 && number < 950000) {
     return '${(number / 1000).toStringAsFixed(1)}K';
-  } else if (number >= 10000000 && number < 1000000000) {
+  } else if (number >= 950000 && number < 950000000) {
     return '${(number / 1000000).toStringAsFixed(1)}M';
   } else {
     return '${(number / 1000000000).toStringAsFixed(1)}B';

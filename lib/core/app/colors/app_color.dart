@@ -5,6 +5,8 @@ var colorPrimaryBlack = const Color(0xFF18191A);
 var colorDarkGrey = const Color(0xFF657786);
 var colorPrimary = const Color(0xFF1DA1F2);
 var colorTitle = const Color(0xFF2C3D50);
+var colorReds400 = Colors.red.shade400;
+var colorBorderAvatar = const Color(0xff3e455b);
 
 var colorHigh = Colors.redAccent;
 var colorMedium = Colors.amber.shade700;
