@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/live_stream_card.dart';
@@ -10,13 +9,21 @@ class ListLiveStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: MasonryGridView.count(
+      child: GridView.builder(
         padding: EdgeInsets.symmetric(
           horizontal: 16.sp,
+        ).add(
+          EdgeInsets.only(
+            bottom: 80.sp,
+          ),
         ),
-        crossAxisCount: 2,
-        mainAxisSpacing: 15.sp,
-        crossAxisSpacing: 15.sp,
+        physics: const BouncingScrollPhysics(),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 0.itemCountGridViewCalendar,
+          mainAxisSpacing: 18.sp,
+          crossAxisSpacing: 10.sp,
+          childAspectRatio: 0.58,
+        ),
         itemCount: listLiveStreamFake.length,
         itemBuilder: (context, index) {
           return LiveStreamCard(

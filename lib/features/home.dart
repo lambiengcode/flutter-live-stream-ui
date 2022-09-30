@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                         activeIcon: PhosphorIcons.magnifyingGlassBold,
                         index: 1,
                       ),
-                      const SizedBox(),
+                      const Expanded(child: SizedBox()),
                       _buildItemBottomBar(
                         inActiveIcon: PhosphorIcons.chatTeardropDotsLight,
                         activeIcon: PhosphorIcons.chatTeardropDotsFill,
@@ -109,11 +109,7 @@ class _HomeState extends State<Home> {
           Align(
             alignment: Alignment.bottomCenter,
             child: TouchableOpacity(
-              onTap: () {
-                setState(() {
-                  _currentIndex = 2;
-                });
-              },
+              onTap: () {},
               child: Container(
                 padding: EdgeInsets.all(13.sp),
                 margin: EdgeInsets.only(bottom: 38.sp),
@@ -124,7 +120,7 @@ class _HomeState extends State<Home> {
                 child: Icon(
                   PhosphorIcons.plusBold,
                   size: 20.sp,
-                  color: Colors.white,
+                  color: mCL,
                 ),
               ),
             ),
@@ -139,22 +135,48 @@ class _HomeState extends State<Home> {
     required IconData activeIcon,
     required int index,
   }) {
-    return TouchableOpacity(
-      onTap: () {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      child: Container(
-        padding: EdgeInsets.all(10.sp),
-        decoration: BoxDecoration(
-          color: index == _currentIndex ? colorPink : Colors.transparent,
-          borderRadius: BorderRadius.circular(15.sp),
-        ),
-        child: Icon(
-          index == _currentIndex ? activeIcon : inActiveIcon,
-          size: 21.sp,
-          color: index == _currentIndex ? mCL : fCL,
+    return Expanded(
+      child: TouchableOpacity(
+        onTap: () {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        child: Container(
+          color: Colors.transparent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(15.sp),
+                ),
+                child: Icon(
+                  index == _currentIndex ? activeIcon : inActiveIcon,
+                  size: 21.sp,
+                  color: index == _currentIndex ? mCL : fCL,
+                ),
+              ),
+              Visibility(
+                visible: index == _currentIndex,
+                child: Column(
+                  children: [
+                    SizedBox(height: 2.sp),
+                    Container(
+                      height: 3.sp,
+                      width: 3.sp,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: mCH,
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
