@@ -159,22 +159,15 @@ class _HomeState extends State<Home> {
                   color: index == _currentIndex ? mCL : fCL,
                 ),
               ),
-              Visibility(
-                visible: index == _currentIndex,
-                child: Column(
-                  children: [
-                    SizedBox(height: 2.sp),
-                    Container(
-                      height: 3.sp,
-                      width: 3.sp,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: mCH,
-                      ),
-                    ),
-                  ],
+              SizedBox(height: 4.sp),
+              Container(
+                height: 3.sp,
+                width: 3.sp,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: index == _currentIndex ? mCH : Colors.transparent,
                 ),
-              )
+              ),
             ],
           ),
         ),

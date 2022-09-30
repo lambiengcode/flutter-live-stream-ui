@@ -22,8 +22,8 @@ class CategoryCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(right: 10.sp),
         padding: EdgeInsets.symmetric(
-          horizontal: 10.sp,
-          vertical: 2.sp,
+          horizontal: 16.sp,
+          vertical: 4.sp,
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.sp),
@@ -47,7 +47,7 @@ class CategoryCard extends StatelessWidget {
               categoryModel.title,
               style: TextStyle(
                 color: mCL,
-                fontSize: 12.sp,
+                fontSize: 10.sp,
               ),
             )
           ],

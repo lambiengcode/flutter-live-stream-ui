@@ -41,8 +41,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Image.asset(
                   imageDefault,
-                  height: 60.sp,
-                  width: 60.sp,
+                  height: 44.sp,
+                  width: 44.sp,
                   fit: BoxFit.cover,
                 ),
                 Row(
@@ -72,11 +72,11 @@ class _HomeScreenState extends State<HomeScreen> {
         bottom: false,
         child: Column(
           children: [
-            SizedBox(height: 15.sp),
+            SizedBox(height: 12.sp),
             const ListUserFollow(),
             SizedBox(height: 12.sp),
             const ListCategoryHome(),
-            SizedBox(height: 20.sp),
+            SizedBox(height: 12.sp),
             const ListLiveStream(),
           ],
         ),
