@@ -97,6 +97,9 @@ class _CommentWidgetsState extends State<CommentWidgets> {
                         ),
                       ),
                     ),
+                    SizedBox(
+                      width: 2.sp,
+                    ),
                     TouchableOpacity(
                       onTap: () {},
                       child: Container(
@@ -120,7 +123,7 @@ class _CommentWidgetsState extends State<CommentWidgets> {
             ),
           ),
           SizedBox(
-            width: 4.sp,
+            width: 6.sp,
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
