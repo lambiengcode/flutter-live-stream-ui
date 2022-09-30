@@ -130,28 +130,33 @@ class LiveStreamCard extends StatelessWidget {
                   height: 30.sp,
                 ),
                 SizedBox(width: 5.sp),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Randy Rangers',
-                      style: TextStyle(
-                        color: mCL,
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.w700,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Randy Rangers',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(
+                          color: mCL,
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
-                    ),
-                    Text(
-                      '159K Followers',
-                      style: TextStyle(
-                        color: fCL,
-                        fontSize: 9.sp,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
+                      Text(
+                        '159K Followers',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: fCL,
+                          fontSize: 9.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
-                const Spacer(),
                 TouchableOpacity(
                   onTap: () {},
                   child: Container(
