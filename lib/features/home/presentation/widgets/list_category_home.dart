@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/category_model.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/category_card.dart';
 

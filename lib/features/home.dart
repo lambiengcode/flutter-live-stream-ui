@@ -1,9 +1,9 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/chat/presentation/screens/chat_screen.dart';
 import 'package:streamskit_mobile/features/home/presentation/screens/home_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
@@ -148,6 +148,7 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 5.sp),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -156,25 +157,22 @@ class _HomeState extends State<Home> {
                 child: Icon(
                   index == _currentIndex ? activeIcon : inActiveIcon,
                   size: 21.sp,
-                  color: index == _currentIndex ? mCL : fCL,
+                  color: index == _currentIndex ? colorPink : fCL,
                 ),
               ),
-              Visibility(
-                visible: index == _currentIndex,
-                child: Column(
-                  children: [
-                    SizedBox(height: 2.sp),
-                    Container(
+              SizedBox(height: 2.sp),
+              index == _currentIndex
+                  ? Container(
                       height: 3.sp,
                       width: 3.sp,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: mCH,
+                        color: index == _currentIndex ? colorPink : fCL,
                       ),
+                    )
+                  : SizedBox(
+                      height: 3.sp,
                     ),
-                  ],
-                ),
-              )
             ],
           ),
         ),

@@ -74,9 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(height: 15.sp),
             const ListUserFollow(),
-            SizedBox(height: 12.sp),
             const ListCategoryHome(),
-            SizedBox(height: 20.sp),
+            SizedBox(height: 12.sp),
             const ListLiveStream(),
           ],
         ),

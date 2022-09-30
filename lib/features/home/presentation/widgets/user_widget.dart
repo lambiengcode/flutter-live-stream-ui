@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
 
 class UserWidget extends StatelessWidget {
@@ -48,19 +48,27 @@ class UserWidget extends StatelessWidget {
         Visibility(
           visible: userModel.isLiveStream,
           child: Positioned(
-            right: 15,
+            right: 12,
+            top: -2.6,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 9.sp),
               decoration: BoxDecoration(
-                color: Colors.redAccent,
+                color: colorBlack1,
                 borderRadius: BorderRadius.circular(10.sp),
               ),
-              child: Text(
-                'Live',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 7.sp,
-                  fontWeight: FontWeight.w500,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 1.sp, horizontal: 9.sp),
+                margin: EdgeInsets.all(2.sp),
+                decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  borderRadius: BorderRadius.circular(10.sp),
+                ),
+                child: Text(
+                  'Live',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 7.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),

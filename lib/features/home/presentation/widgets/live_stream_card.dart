@@ -1,7 +1,6 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
@@ -73,13 +72,13 @@ class LiveStreamCard extends StatelessWidget {
                                   height: 13.sp,
                                   width: 13.sp,
                                   fit: BoxFit.cover,
-                                  color: Colors.white,
+                                  color: mCL,
                                 ),
                                 SizedBox(width: 5.sp),
                                 Text(
                                   '${liveStreamModel.peopleParticipant}',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: mCL,
                                     fontSize: 9.sp,
                                     fontWeight: FontWeight.w500,
                                   ),
@@ -113,7 +112,7 @@ class LiveStreamCard extends StatelessWidget {
                   Text(
                     'You update Ep Ep',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: mCL,
                       fontSize: 11.sp,
                     ),
                   ),
@@ -126,8 +125,8 @@ class LiveStreamCard extends StatelessWidget {
               children: [
                 CustomNetworkImage(
                   urlToImage:
-                      'https://cdn.dribbble.com/users/3245638/screenshots/15628559/media/21f20574f74b6d6f8e74f92bde7de2fd.png?compress=1&resize=400x300&vertical=top',
-                  height: 30.sp,
+                      'https://avatars.githubusercontent.com/u/60530946?v=4',
+                  height: 23.sp,
                 ),
                 SizedBox(width: 5.sp),
                 Expanded(
@@ -161,9 +160,10 @@ class LiveStreamCard extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     color: Colors.transparent,
-                    child: Icon(
-                      PhosphorIcons.dotsThreeVerticalFill,
-                      size: 20.sp,
+                    child: Image.asset(
+                      'assets/icons/ic_more.png',
+                      height: 12.sp,
+                      fit: BoxFit.cover,
                       color: fCL,
                     ),
                   ),
