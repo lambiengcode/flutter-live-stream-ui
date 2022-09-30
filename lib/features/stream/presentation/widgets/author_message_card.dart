@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/data/models/message_model.dart';
 
 class AuthorMessageCard extends StatefulWidget {
   final MessageModel messageModel;
-  const AuthorMessageCard({Key? key, required this.messageModel})
+  final bool pin;
+  const AuthorMessageCard(
+      {Key? key, required this.messageModel, required this.pin})
       : super(key: key);
 
   @override
@@ -15,24 +20,20 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(bottom: 10.sp),
+      padding: EdgeInsets.all(6.sp),
+      margin: EdgeInsets.only(bottom: 5.sp),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100.sp),
+        color: Colors.white.withOpacity(0.10),
+      ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Container(
-            width: 38.sp,
-            height: 38.sp,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1.4, color: Colors.white),
-              shape: BoxShape.circle,
-              image: DecorationImage(
-                image: NetworkImage(
-                  widget.messageModel.imageUrl,
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
+          CustomNetworkImage(
+            height: 32.sp,
+            width: 32.sp,
+            urlToImage: widget.messageModel.imageUrl,
+            shape: BoxShape.circle,
           ),
           SizedBox(
             width: 10.sp,
@@ -44,12 +45,12 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
                 Text(
                   widget.messageModel.fullName,
                   style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
-                const SizedBox(
-                  height: 6,
+                SizedBox(
+                  height: 2.sp,
                 ),
                 Text(
                   widget.messageModel.message,
@@ -57,13 +58,27 @@ class _AuthorMessageCardState extends State<AuthorMessageCard> {
                   textAlign: TextAlign.justify,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      fontSize: 12.sp,
+                      fontSize: 10.sp,
                       fontWeight: FontWeight.w500,
                       color: Colors.white),
                 ),
               ],
             ),
           ),
+          widget.pin
+              ? Container(
+                  margin: EdgeInsets.only(left: 4.sp),
+                  height: 30.sp,
+                  width: 30.sp,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100.sp),
+                    color: Colors.grey.withOpacity(0.28),
+                  ),
+                  child: Icon(
+                    PhosphorIcons.pushPinFill,
+                    size: 16.0.sp,
+                  ))
+              : const SizedBox(),
         ],
       ),
     );
