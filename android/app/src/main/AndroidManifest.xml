@@ -1,5 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.streams.kit">
+
+   <queries>
+        <provider android:authorities="com.facebook.katana.provider.PlatformProvider" />
+
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+
+    </queries>
    <application
         android:label="StreamKit"
         android:name="${applicationName}"

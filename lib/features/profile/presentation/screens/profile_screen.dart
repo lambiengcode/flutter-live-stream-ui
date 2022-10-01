@@ -5,6 +5,7 @@ import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
 import 'package:streamskit_mobile/features/profile/data/list_live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
+import 'package:streamskit_mobile/features/profile/presentation/widgets/bottom_sheet_choose_option.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/circle_icon.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/details_info_live_user.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/gribview_live_card.dart';
@@ -25,13 +26,15 @@ class _ProfileScreenState extends State<ProfileScreen>
       LiveCardModel(
           id: "",
           idAccount: "",
+          categoryLive: 4,
           image:
               "https://cyberxanh.vn/wp-content/uploads/2021/11/top-20-mau-thiet-ke-phong-livestream-game-cuc-dinh-33-1038x800.jpg",
-          numberViewer: 10000,
+          numberViewer: 950000001,
           statusLive: true),
       LiveCardModel(
           id: "",
           idAccount: "",
+          categoryLive: 3,
           image:
               "https://st.nhipcaudautu.vn/staticFile/Subject/2019/01/03/livestream-game_31517638.jpg",
           numberViewer: 78421,
@@ -39,17 +42,19 @@ class _ProfileScreenState extends State<ProfileScreen>
       LiveCardModel(
           id: "",
           idAccount: "",
+          categoryLive: 2,
           image:
               "https://photo-cms-tinnhanhchungkhoan.zadn.vn/w660/Uploaded/2022/gtnwae/2022_03_14/z-a-5520.jpg",
           numberViewer: 78421,
-          statusLive: false),
+          statusLive: true),
       LiveCardModel(
           id: "",
           idAccount: "",
+          categoryLive: 1,
           image:
               "https://ecdn.game4v.com/g4v-content/uploads/2021/05/stream-1.jpg",
-          numberViewer: 78421,
-          statusLive: false)
+          numberViewer: 950000001,
+          statusLive: true)
     ],
   );
   static const listFieldLive = [
@@ -87,20 +92,25 @@ class _ProfileScreenState extends State<ProfileScreen>
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           elevation: 0,
-          leadingWidth: 80.sp,
+          leadingWidth: 64.sp,
           backgroundColor: Colors.transparent,
-          leading: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.sp),
-            child: CircleIcon(
-              onTap: () {},
-              icon: PhosphorIcons.arrow_left,
-            ),
-          ),
+          // leading: Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 16.sp),
+          //   child: CircleIcon(
+          //     onTap: () {},
+          //     icon: PhosphorIcons.arrow_left,
+          //   ),
+          // ),
           actions: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.sp),
+              padding: EdgeInsets.symmetric(horizontal: 16.sp),
               child: CircleIcon(
-                onTap: () {},
+                onTap: () {
+                  showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (context) => const BottomSheetChooseOption());
+                },
                 icon: PhosphorIcons.dots_three,
               ),
             ),
@@ -111,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             return [
               SliverToBoxAdapter(
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                  padding: EdgeInsets.symmetric(horizontal: 8.sp),
                   child: DetailInfoLiveUserWidget(user: user),
                 ),
               ),
@@ -176,16 +186,20 @@ class _ProfileScreenState extends State<ProfileScreen>
             controller: _tabController,
             children: [
               GridviewLiveCard(
-                liveModel: listLiveStream.listLiveCardModel[0],
+                liveModel: listLiveStream.listLiveCardModel,
+                type: listLiveStream.type,
               ),
               GridviewLiveCard(
-                liveModel: listLiveStream.listLiveCardModel[1],
+                liveModel: [listLiveStream.listLiveCardModel[1]],
+                type: listLiveStream.type,
               ),
               GridviewLiveCard(
-                liveModel: listLiveStream.listLiveCardModel[2],
+                liveModel: [listLiveStream.listLiveCardModel[2]],
+                type: listLiveStream.type,
               ),
               GridviewLiveCard(
-                liveModel: listLiveStream.listLiveCardModel[3],
+                liveModel: [listLiveStream.listLiveCardModel[3]],
+                type: listLiveStream.type,
               ),
             ],
           ),

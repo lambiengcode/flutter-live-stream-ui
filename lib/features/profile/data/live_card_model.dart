@@ -1,18 +1,50 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 class LiveCardModel {
   final String id;
   final String idAccount;
   final String image;
   final bool statusLive;
   final int numberViewer;
+  final int categoryLive;
   LiveCardModel({
     required this.id,
     required this.idAccount,
     required this.image,
     required this.statusLive,
     required this.numberViewer,
+    required this.categoryLive,
   });
+
+  String get getTitleType {
+    switch (categoryLive) {
+      case 1:
+        return 'Game';
+      case 2:
+        return 'Review';
+      case 3:
+        return 'Music';
+      case 4:
+        return 'Talk';
+    }
+    return '';
+  }
+
+  Color get getColorType {
+    switch (categoryLive) {
+      case 1:
+        return Colors.redAccent;
+      case 2:
+        return Colors.purpleAccent;
+      case 3:
+        return Colors.blueAccent;
+      case 4:
+        return Colors.orangeAccent;
+    }
+    return Colors.redAccent;
+  }
 
   LiveCardModel copyWith({
     String? id,
@@ -20,6 +52,7 @@ class LiveCardModel {
     String? image,
     bool? statusLive,
     int? numberViewer,
+    int? categoryLive,
   }) {
     return LiveCardModel(
       id: id ?? this.id,
@@ -27,6 +60,7 @@ class LiveCardModel {
       image: image ?? this.image,
       statusLive: statusLive ?? this.statusLive,
       numberViewer: numberViewer ?? this.numberViewer,
+      categoryLive: categoryLive ?? this.categoryLive,
     );
   }
 
@@ -37,6 +71,7 @@ class LiveCardModel {
       'image': image,
       'statusLive': statusLive,
       'numberViewer': numberViewer,
+      'categoryLive': categoryLive,
     };
   }
 
@@ -47,6 +82,7 @@ class LiveCardModel {
       image: map['image'] ?? '',
       statusLive: map['statusLive'] ?? false,
       numberViewer: map['numberViewer']?.toInt() ?? 0,
+      categoryLive: map['categoryLive']?.toInt() ?? 0,
     );
   }
 
@@ -57,7 +93,7 @@ class LiveCardModel {
 
   @override
   String toString() {
-    return 'LiveCardModel(id: $id, idAccount: $idAccount, image: $image, statusLive: $statusLive, numberViewer: $numberViewer)';
+    return 'LiveCardModel(id: $id, idAccount: $idAccount, image: $image, statusLive: $statusLive, numberViewer: $numberViewer, categoryLive: $categoryLive)';
   }
 
   @override
@@ -69,7 +105,8 @@ class LiveCardModel {
         other.idAccount == idAccount &&
         other.image == image &&
         other.statusLive == statusLive &&
-        other.numberViewer == numberViewer;
+        other.numberViewer == numberViewer &&
+        other.categoryLive == categoryLive;
   }
 
   @override
@@ -78,6 +115,7 @@ class LiveCardModel {
         idAccount.hashCode ^
         image.hashCode ^
         statusLive.hashCode ^
-        numberViewer.hashCode;
+        numberViewer.hashCode ^
+        categoryLive.hashCode;
   }
 }

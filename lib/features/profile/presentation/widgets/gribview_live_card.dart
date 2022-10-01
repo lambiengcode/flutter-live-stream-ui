@@ -4,10 +4,11 @@ import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/live_card_profile.dart';
 
 class GridviewLiveCard extends StatelessWidget {
-  final LiveCardModel liveModel;
+  final List<LiveCardModel> liveModel;
+  final int type;
   const GridviewLiveCard({
     Key? key,
-    required this.liveModel,
+    required this.liveModel, required this.type,
   }) : super(key: key);
 
   @override
@@ -23,13 +24,8 @@ class GridviewLiveCard extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         mainAxisSpacing: 20.sp,
         children: List.generate(
-          6,
-          (index) => LiveCardProflie(
-            imageLive: liveModel.image,
-            viewerLive: liveModel.numberViewer,
-            statusLive: liveModel.statusLive,
-            onTap: () {},
-          ),
+          liveModel.length,
+          (index) => LiveCardProflie(liveModel: liveModel[index]),
         ),
       ),
     );
