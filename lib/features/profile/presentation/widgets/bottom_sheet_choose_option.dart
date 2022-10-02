@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
-import 'package:streamskit_mobile/features/auth/presentation/screens/auth_screen.dart';
+import 'package:streamskit_mobile/features/profile/presentation/screens/setting_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/row_icon_text.dart';
 
 class BottomSheetChooseOption extends StatelessWidget {
@@ -45,7 +45,7 @@ class BottomSheetChooseOption extends StatelessWidget {
               Navigator.pop(context);
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => const AuthScreen(),
+                  builder: (context) => const SettingScreen(),
                 ),
               );
             },
