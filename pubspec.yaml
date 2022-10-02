@@ -44,6 +44,7 @@ dependencies:
 
   # UI Helper
   flutter_linkify: ^5.0.2
+  url_launcher: ^6.1.5
 
   # Image
   cached_network_image: ^3.2.1

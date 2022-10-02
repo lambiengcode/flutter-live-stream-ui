@@ -3,21 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
 import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class LiveCardProflie extends StatelessWidget {
-  final String imageLive;
-  final bool statusLive;
-  final Color? categoryColorLive;
-  final int viewerLive;
+  final LiveCardModel liveModel;
   final Function()? onTap;
   const LiveCardProflie({
     Key? key,
-    required this.imageLive,
-    required this.statusLive,
-    required this.viewerLive,
-    this.categoryColorLive,
+    required this.liveModel,
     this.onTap,
   }) : super(key: key);
 
@@ -28,12 +24,12 @@ class LiveCardProflie extends StatelessWidget {
       child: Stack(
         children: [
           CustomNetworkImage(
-            urlToImage: imageLive,
+            urlToImage: liveModel.image,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16.sp),
             height: 175.sp,
           ),
-          statusLive
+          liveModel.statusLive
               ? Positioned(
                   right: 5.sp,
                   top: 8.sp,
@@ -43,22 +39,19 @@ class LiveCardProflie extends StatelessWidget {
                       vertical: 4.sp,
                     ),
                     decoration: BoxDecoration(
-                      color: categoryColorLive ?? colorReds400,
+                      color: liveModel.getColorType,
                       borderRadius: BorderRadius.circular(
                         9.sp,
                       ),
                     ),
                     child: Text(
-                      "Live",
-                      style: TextStyle(
-                        color: mCL,
-                        fontSize: 9.sp,
-                      ),
+                      liveModel.getTitleType,
+                      style: text9mCL,
                     ),
                   ),
                 )
               : const SizedBox(),
-          statusLive
+          liveModel.statusLive
               ? Positioned(
                   left: 5.sp,
                   top: 8.sp,
@@ -90,12 +83,8 @@ class LiveCardProflie extends StatelessWidget {
                             ),
                             SizedBox(width: 5.sp),
                             Text(
-                              formatNumberViewer(viewerLive),
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColorLight,
-                                fontSize: 9.sp,
-                                fontWeight: FontWeight.w500,
-                              ),
+                              formatNumberViewer(liveModel.numberViewer),
+                              style: text9mCL,
                             )
                           ],
                         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class IndexInfoUser extends StatelessWidget {
@@ -17,19 +18,12 @@ class IndexInfoUser extends StatelessWidget {
       children: [
         Text(
           formatNumberIndex(numberIndex),
-          style: TextStyle(
-            color: Theme.of(context).primaryColorLight,
-            fontSize: 13.sp,
-            fontWeight: FontWeight.w700,
-          ),
+          style: text13w700mCL,
         ),
         SizedBox(height: 2.sp),
         Text(
           titleIndex,
-          style: TextStyle(
-            color: Theme.of(context).primaryColorLight,
-            fontSize: 11.sp,
-          ),
+          style: text11mCL,
         ),
       ],
     );
