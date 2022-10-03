@@ -8,7 +8,8 @@ class GridviewLiveCard extends StatelessWidget {
   final int type;
   const GridviewLiveCard({
     Key? key,
-    required this.liveModel, required this.type,
+    required this.liveModel,
+    required this.type,
   }) : super(key: key);
 
   @override
