@@ -4,3 +4,4 @@ const double inchToDP = 160;
 const int delay200ms = 200;
 const int delay500ms = 500;
 const int delayASecond = 1000;
+const int delayHalfSecond = 500;

@@ -22,6 +22,9 @@ var colorBlueGreyIos = const Color(0xFF1C1F2E);
 
 var colorGreyWhite = const Color(0x4dE3E3E3);
 var colorGreyWhite2 = const Color(0xFFE3E3E3);
+var colorCaptionSearch = const Color(0xFFA3A3A3);
+
+Color colorDividerTimeline = const Color(0xFFC5D0CF);
 
 Color mC = Colors.grey.shade100;
 Color mCL = Colors.white;
