@@ -109,6 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen>
               return [
                 SliverToBoxAdapter(
                   child: Container(
+                    margin: EdgeInsets.only(top: 12.sp),
                     padding: EdgeInsets.symmetric(horizontal: 8.sp),
                     child: DetailInfoLiveUserWidget(user: user),
                   ),
