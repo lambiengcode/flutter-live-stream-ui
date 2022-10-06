@@ -108,10 +108,7 @@ class LiveCardProflie extends StatelessWidget {
                 13.sp,
               ),
             ),
-            child: Text(
-              'You update Ep Ep',
-              style: text11mCL
-            ),
+            child: Text('You update Ep Ep', style: text11mCL),
           )
         ],
       ),

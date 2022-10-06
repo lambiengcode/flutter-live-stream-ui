@@ -8,4 +8,3 @@ var colorRed = const Color(0xFFf11a42);
 var colorBlue = const Color(0xFF1d51fe);
 var colorPurple = const Color(0xFF7d60e5);
 var colorHintText = const Color(0xFFa0a0a0);
-
