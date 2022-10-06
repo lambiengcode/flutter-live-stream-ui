@@ -35,13 +35,16 @@ class _DetailInfoLiveUserWidgetState extends State<DetailInfoLiveUserWidget> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomNetworkImage(
-                  urlToImage:
-                      "https://i.pinimg.com/originals/ca/33/57/ca335747b1f2b5b8611be00eb1307105.jpg",
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(16.sp),
-                  width: 150.w,
-                  height: 150.sp,
+                GestureDetector(
+                  onTap: () {},
+                  child: CustomNetworkImage(
+                    urlToImage:
+                        "https://i.pinimg.com/originals/ca/33/57/ca335747b1f2b5b8611be00eb1307105.jpg",
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(16.sp),
+                    width: 150.w,
+                    height: 150.sp,
+                  ),
                 ),
                 Row(
                   children: [

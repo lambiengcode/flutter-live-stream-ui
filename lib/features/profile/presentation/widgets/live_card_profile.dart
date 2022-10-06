@@ -93,6 +93,26 @@ class LiveCardProflie extends StatelessWidget {
                   ),
                 )
               : const SizedBox(),
+          Container(
+            alignment: Alignment.bottomLeft,
+            height: double.infinity,
+            width: double.infinity,
+            padding: EdgeInsets.only(bottom: 16.sp, left: 8.sp),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.transparent, Colors.black.withOpacity(0.89)],
+                end: Alignment.bottomCenter,
+                begin: Alignment.topCenter,
+              ),
+              borderRadius: BorderRadius.circular(
+                13.sp,
+              ),
+            ),
+            child: Text(
+              'You update Ep Ep',
+              style: text11mCL
+            ),
+          )
         ],
       ),
     );

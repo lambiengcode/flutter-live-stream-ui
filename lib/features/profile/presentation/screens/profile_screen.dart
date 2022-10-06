@@ -54,148 +54,160 @@ class _ProfileScreenState extends State<ProfileScreen>
   }
 
   @override
+  void dispose() {
+    _colorAnimationController.dispose();
+    _scrollController.dispose();
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 1,
       length: 4,
-      child: AnimatedBuilder(
-        animation: _colorAnimationController,
-        builder: (context, child) => Scaffold(
-          extendBodyBehindAppBar: true,
-          backgroundColor: Theme.of(context).backgroundColor,
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: true,
-            title: Opacity(
-              opacity: colorTitleTween.value,
-              child: Row(
-                children: [
-                  CustomNetworkImage(
-                    urlToImage: user.urlToImage,
-                    height: 25.sp,
-                    width: 25.sp,
-                  ),
-                  SizedBox(
-                    width: 10.sp,
-                  ),
-                  Text(
-                    "Tony Tony Chopper",
-                    style: text13mCL,
-                  ),
-                ],
-              ),
-            ),
-            leadingWidth: 64.sp,
-            backgroundColor: colorTween.value,
-            actions: [
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.sp),
-                child: CircleIcon(
-                  onTap: () {
-                    showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) => const BottomSheetChooseOption());
-                  },
-                  icon: PhosphorIcons.dots_three,
-                  backgroundIcon: iconColorTween.value,
-                ),
-              ),
-            ],
-          ),
-          body: NestedScrollView(
-            controller: _scrollController,
-            headerSliverBuilder: (context, value) {
-              return [
-                SliverToBoxAdapter(
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8.sp),
-                    child: DetailInfoLiveUserWidget(user: user),
-                  ),
-                ),
-                SliverToBoxAdapter(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.sp),
-                    child: Column(
-                      children: [
-                        const Divider(
-                          thickness: 0.5,
-                          color: Colors.white24,
-                        ),
-                        TabBar(
-                          onTap: (_) {},
-                          overlayColor: MaterialStateProperty.all<Color>(
-                              Colors.transparent),
-                          indicatorSize: TabBarIndicatorSize.label,
-                          automaticIndicatorColorAdjustment: false,
-                          indicatorColor: mGB,
-                          unselectedLabelStyle: TextStyle(
-                            color: mGB,
-                            fontSize: 10.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          labelStyle: TextStyle(
-                            color: mGB,
-                            fontSize: 11.sp,
-                            fontWeight: FontWeight.w500,
-                          ),
-                          isScrollable: true,
-                          controller: _tabController,
-                          tabs: [
-                            Tab(
-                              child: SizedBox(
-                                width: 20.w,
-                                child: const Text("Live Stream"),
-                              ),
-                            ),
-                            Tab(
-                              child: SizedBox(
-                                width: 16.w,
-                                child: const Text("Last Live"),
-                              ),
-                            ),
-                            Tab(
-                              child: SizedBox(
-                                width: 10.w,
-                                child: const Text("Star"),
-                              ),
-                            ),
-                            Tab(
-                              child: SizedBox(
-                                width: 10.w,
-                                child: const Text("Posts"),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+      child: Scaffold(
+        extendBodyBehindAppBar: true,
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: const Size(double.infinity, kToolbarHeight),
+          child: AnimatedBuilder(
+            animation: _colorAnimationController,
+            builder: (context, child) => AppBar(
+              elevation: 0,
+              centerTitle: true,
+              title: Opacity(
+                opacity: colorTitleTween.value,
+                child: Row(
+                  children: [
+                    CustomNetworkImage(
+                      urlToImage: user.urlToImage,
+                      height: 25.sp,
+                      width: 25.sp,
                     ),
+                    SizedBox(
+                      width: 10.sp,
+                    ),
+                    Text(
+                      "Tony Tony Chopper",
+                      style: text13mCL,
+                    ),
+                  ],
+                ),
+              ),
+              leadingWidth: 64.sp,
+              backgroundColor: colorTween.value,
+              actions: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                  child: CircleIcon(
+                    onTap: () {
+                      showModalBottomSheet(
+                          backgroundColor: Colors.transparent,
+                          context: context,
+                          builder: (context) =>
+                              const BottomSheetChooseOption());
+                    },
+                    icon: PhosphorIcons.dots_three,
+                    backgroundIcon: iconColorTween.value,
                   ),
-                ),
-              ];
-            },
-            body: TabBarView(
-              physics: const BouncingScrollPhysics(),
-              controller: _tabController,
-              children: [
-                GridviewLiveCard(
-                  liveModel: listLiveStream.listLiveCardModel,
-                  type: listLiveStream.type,
-                ),
-                GridviewLiveCard(
-                  liveModel: [listLiveStream.listLiveCardModel[1]],
-                  type: listLiveStream.type,
-                ),
-                GridviewLiveCard(
-                  liveModel: [listLiveStream.listLiveCardModel[2]],
-                  type: listLiveStream.type,
-                ),
-                GridviewLiveCard(
-                  liveModel: [listLiveStream.listLiveCardModel[3]],
-                  type: listLiveStream.type,
                 ),
               ],
             ),
+          ),
+        ),
+        body: NestedScrollView(
+          controller: _scrollController,
+          headerSliverBuilder: (context, value) {
+            return [
+              SliverToBoxAdapter(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 8.sp),
+                  child: DetailInfoLiveUserWidget(user: user),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                  child: Column(
+                    children: [
+                      const Divider(
+                        thickness: 0.5,
+                        color: Colors.white24,
+                      ),
+                      TabBar(
+                        onTap: (_) {},
+                        overlayColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                        indicatorSize: TabBarIndicatorSize.label,
+                        automaticIndicatorColorAdjustment: false,
+                        indicatorColor: mGB,
+                        unselectedLabelStyle: TextStyle(
+                          color: mGB,
+                          fontSize: 10.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        labelStyle: TextStyle(
+                          color: mGB,
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        isScrollable: true,
+                        controller: _tabController,
+                        tabs: [
+                          Tab(
+                            child: SizedBox(
+                              width: 64.sp,
+                              child: const Text("Live Stream"),
+                            ),
+                          ),
+                          Tab(
+                            child: SizedBox(
+                              width: 48.sp,
+                              child: const Text("Last Live"),
+                            ),
+                          ),
+                          Tab(
+                            child: SizedBox(
+                              width: 30.sp,
+                              child: const Text("Star"),
+                            ),
+                          ),
+                          Tab(
+                            child: SizedBox(
+                              width: 30.sp,
+                              child: const Text("Posts"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            physics: const BouncingScrollPhysics(),
+            controller: _tabController,
+            children: [
+              GridviewLiveCard(
+                liveModel: listLiveStream.listLiveCardModel,
+                type: listLiveStream.type,
+              ),
+              GridviewLiveCard(
+                liveModel: [listLiveStream.listLiveCardModel[1]],
+                type: listLiveStream.type,
+              ),
+              GridviewLiveCard(
+                liveModel: [listLiveStream.listLiveCardModel[2]],
+                type: listLiveStream.type,
+              ),
+              GridviewLiveCard(
+                liveModel: [listLiveStream.listLiveCardModel[3]],
+                type: listLiveStream.type,
+              ),
+            ],
           ),
         ),
       ),

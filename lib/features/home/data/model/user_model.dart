@@ -8,16 +8,22 @@ class UserModel {
   final String fullName;
   final String urlToImage;
   String? description;
+  String? phoneNumber;
+  bool gender;
+  DateTime? birthday;
   int? posts;
   int? followings;
   int? followers;
   List<String>? listFields;
-  final bool isLiveStream;
+  bool isLiveStream;
   UserModel({
     this.id,
     required this.fullName,
     required this.urlToImage,
     this.description,
+    this.phoneNumber,
+    this.gender = false,
+    this.birthday,
     this.posts,
     this.followings,
     this.followers,
@@ -30,6 +36,9 @@ class UserModel {
     String? fullName,
     String? urlToImage,
     String? description,
+    String? phoneNumber,
+    bool? gender,
+    DateTime? birthday,
     int? posts,
     int? followings,
     int? followers,
@@ -41,6 +50,9 @@ class UserModel {
       fullName: fullName ?? this.fullName,
       urlToImage: urlToImage ?? this.urlToImage,
       description: description ?? this.description,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      gender: gender ?? this.gender,
+      birthday: birthday ?? this.birthday,
       posts: posts ?? this.posts,
       followings: followings ?? this.followings,
       followers: followers ?? this.followers,
@@ -55,6 +67,9 @@ class UserModel {
       'fullName': fullName,
       'urlToImage': urlToImage,
       'description': description,
+      'phoneNumber': phoneNumber,
+      'gender': gender,
+      'birthday': birthday?.millisecondsSinceEpoch,
       'posts': posts,
       'followings': followings,
       'followers': followers,
@@ -69,6 +84,11 @@ class UserModel {
       fullName: map['fullName'] ?? '',
       urlToImage: map['urlToImage'] ?? '',
       description: map['description'],
+      phoneNumber: map['phoneNumber'],
+      gender: map['gender'] ?? false,
+      birthday: map['birthday'] != null
+          ? DateTime.fromMillisecondsSinceEpoch(map['birthday'])
+          : null,
       posts: map['posts']?.toInt(),
       followings: map['followings']?.toInt(),
       followers: map['followers']?.toInt(),
@@ -84,7 +104,7 @@ class UserModel {
 
   @override
   String toString() {
-    return 'UserModel(id: $id, fullName: $fullName, urlToImage: $urlToImage, description: $description, posts: $posts, followings: $followings, followers: $followers, listFields: $listFields, isLiveStream: $isLiveStream)';
+    return 'UserModel(id: $id, fullName: $fullName, urlToImage: $urlToImage, description: $description, phoneNumber: $phoneNumber, gender: $gender, birthday: $birthday, posts: $posts, followings: $followings, followers: $followers, listFields: $listFields, isLiveStream: $isLiveStream)';
   }
 
   @override
@@ -96,6 +116,9 @@ class UserModel {
         other.fullName == fullName &&
         other.urlToImage == urlToImage &&
         other.description == description &&
+        other.phoneNumber == phoneNumber &&
+        other.gender == gender &&
+        other.birthday == birthday &&
         other.posts == posts &&
         other.followings == followings &&
         other.followers == followers &&
@@ -109,6 +132,9 @@ class UserModel {
         fullName.hashCode ^
         urlToImage.hashCode ^
         description.hashCode ^
+        phoneNumber.hashCode ^
+        gender.hashCode ^
+        birthday.hashCode ^
         posts.hashCode ^
         followings.hashCode ^
         followers.hashCode ^
