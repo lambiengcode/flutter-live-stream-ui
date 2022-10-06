@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 
@@ -30,6 +31,20 @@ TextStyle text11mCL = TextStyle(
 /// Text size: 11 color:  colorBlack1
 TextStyle text11cB1 = TextStyle(
   color: colorBlack1,
+  fontSize: 11.sp,
+  overflow: TextOverflow.ellipsis,
+);
+
+///Text size: 11 color : mGB
+TextStyle text11mGB = TextStyle(
+  color: mGB,
+  fontSize: 11.sp,
+  overflow: TextOverflow.ellipsis,
+);
+
+///Text size: 11 color : mGM
+TextStyle text11mGM = TextStyle(
+  color: mGM,
   fontSize: 11.sp,
   overflow: TextOverflow.ellipsis,
 );
