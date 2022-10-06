@@ -26,6 +26,7 @@ class _ProfileScreenState extends State<ProfileScreen>
   late AnimationController _colorAnimationController;
   late Animation colorTween, iconColorTween;
   late Animation<double> colorTitleTween;
+  bool isMe = true;
 
   @override
   void initState() {
@@ -95,6 +96,18 @@ class _ProfileScreenState extends State<ProfileScreen>
                   ],
                 ),
               ),
+              leading: !isMe
+                  ? Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                      child: CircleIcon(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        icon: PhosphorIcons.arrow_left,
+                        backgroundIcon: iconColorTween.value,
+                      ),
+                    )
+                  : null,
               leadingWidth: 64.sp,
               backgroundColor: colorTween.value,
               actions: [
@@ -122,6 +135,7 @@ class _ProfileScreenState extends State<ProfileScreen>
             return [
               SliverToBoxAdapter(
                 child: Container(
+                  margin: EdgeInsets.only(top: 12.sp),
                   padding: EdgeInsets.symmetric(horizontal: 8.sp),
                   child: DetailInfoLiveUserWidget(user: user),
                 ),

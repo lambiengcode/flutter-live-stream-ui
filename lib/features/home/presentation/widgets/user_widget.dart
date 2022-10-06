@@ -15,7 +15,7 @@ class UserWidget extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          margin: EdgeInsets.only(right: 18.sp),
+          margin: EdgeInsets.only(right: 8.sp),
           child: Column(
             children: [
               Container(
@@ -28,13 +28,13 @@ class UserWidget extends StatelessWidget {
                   ),
                 ),
                 child: CustomNetworkImage(
-                  height: 45.sp,
-                  width: 45.sp,
+                  height: 42.sp,
+                  width: 42.sp,
                   urlToImage: userModel.urlToImage,
                   shape: BoxShape.circle,
                 ),
               ),
-              SizedBox(height: 9.sp),
+              SizedBox(height: 6.sp),
               Text(
                 userModel.fullName,
                 style: TextStyle(
@@ -51,17 +51,26 @@ class UserWidget extends StatelessWidget {
           child: Positioned(
             right: 15,
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 9.sp),
-              decoration: BoxDecoration(
-                color: Colors.redAccent,
-                borderRadius: BorderRadius.circular(10.sp),
+              padding: const EdgeInsets.only(
+                left: 1,
+                bottom: 1,
+                right: 1,
               ),
-              child: Text(
-                'Live',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 7.sp,
-                  fontWeight: FontWeight.w500,
+              alignment: Alignment.center,
+              color: Theme.of(context).scaffoldBackgroundColor,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 2.sp, horizontal: 9.sp),
+                decoration: BoxDecoration(
+                  color: Colors.redAccent,
+                  borderRadius: BorderRadius.circular(10.sp),
+                ),
+                child: Text(
+                  'Live',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 7.sp,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),

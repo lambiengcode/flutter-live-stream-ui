@@ -42,9 +42,9 @@ class _ListCategoryHomeState extends State<ListCategoryHome> {
             ],
           ),
         ),
-        SizedBox(height: 12.sp),
+        SizedBox(height: 8.sp),
         SizedBox(
-          height: 30.sp,
+          height: 32.5.sp,
           width: double.infinity,
           child: ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 16.sp),
