@@ -21,15 +21,15 @@ void main() {
       'should return a valid model when the JSON',
       () async {
         // arrange
-        final String jsonMap = fixture('live_stream_model.json');
-        final List jsonListRaw = jsonDecode(jsonMap)['data'];
+        final List<dynamic> arrayRaw =
+            jsonDecode(fixture('live_stream_model.json'));
         // act
-        final List<LiveStreamModel> result = jsonListRaw
+        final List<LiveStreamModel> result = arrayRaw
             .map<LiveStreamModel>(
                 (liveStreamJson) => LiveStreamModel.fromMap(liveStreamJson))
             .toList();
         // assert
-        expect(result.length, jsonListRaw.length);
+        expect(result.length, arrayRaw.length);
       },
     );
   });
