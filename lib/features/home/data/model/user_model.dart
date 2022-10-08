@@ -16,6 +16,7 @@ class UserModel {
   int? followers;
   List<String>? listFields;
   bool isLiveStream;
+  bool? isExpert;
   UserModel({
     this.id,
     required this.fullName,
@@ -29,6 +30,7 @@ class UserModel {
     this.followers,
     this.listFields,
     this.isLiveStream = false,
+    this.isExpert = false,
   });
 
   UserModel copyWith({
@@ -44,6 +46,7 @@ class UserModel {
     int? followers,
     List<String>? listFields,
     bool? isLiveStream,
+    bool? isExpert,
   }) {
     return UserModel(
       id: id ?? this.id,
@@ -58,6 +61,7 @@ class UserModel {
       followers: followers ?? this.followers,
       listFields: listFields ?? this.listFields,
       isLiveStream: isLiveStream ?? this.isLiveStream,
+      isExpert: isExpert ?? this.isExpert,
     );
   }
 

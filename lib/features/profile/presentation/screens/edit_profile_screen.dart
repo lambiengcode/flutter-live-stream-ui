@@ -18,16 +18,18 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   final UserModel user = UserModel(
-      id: "",
-      urlToImage:
-          "https://donoithatdanang.com/wp-content/uploads/2021/11/mang-hinh-khoa-cute-08.jpg",
-      fullName: "Tony Tony Chopper",
-      description:
-          "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM",
-      posts: 1000,
-      followers: 9400,
-      followings: 8543337121,
-      listFields: null);
+    id: "",
+    urlToImage:
+        "https://donoithatdanang.com/wp-content/uploads/2021/11/mang-hinh-khoa-cute-08.jpg",
+    fullName: "Tony Tony Chopper",
+    description:
+        "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM",
+    posts: 1000,
+    followers: 9400,
+    followings: 8543337121,
+    listFields: null,
+    isExpert: false,
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
