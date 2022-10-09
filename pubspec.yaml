@@ -34,24 +34,52 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  
-  provider: ^6.0.0
+
+  # State Management
+  provider: ^6.0.3
+
+  # Network
+  dio: ^4.0.6
+
   # Icon
   cupertino_icons: ^1.0.2
-  flutter_launcher_icons: ^0.10.0
   phosphor_flutter: ^1.4.0
   flutter_phosphor_icons: ^0.0.1+6
 
   # UI Helper
   flutter_linkify: ^5.0.2
+  url_launcher: ^6.1.5
 
   # Image
   cached_network_image: ^3.2.1
+
+  # Dependency Injection
+  get_it: ^7.2.0
+  injectable: ^1.5.3
+
+  # Caching
+  hive: ^2.2.3
+
+  # Mics
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  rxdart: ^0.27.5
+  path_provider: ^2.0.11
 
 dev_dependencies:
   flutter_lints: ^2.0.1
   flutter_test:
     sdk: flutter
+
+  # Code generators
+  flutter_launcher_icons: ^0.10.0
+  freezed: ^0.14.2
+  functional_enum: ^1.1.3
+  injectable_generator: ^1.4.1
+  build_runner: ^2.0.4
+
+  # Test
+  mockito: ^5.2.0
 
 flutter_icons:
   android: "launcher_icon"

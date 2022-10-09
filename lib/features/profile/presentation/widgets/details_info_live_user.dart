@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+import 'package:streamskit_mobile/core/network/url_launcher_helper.dart';
+import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/index_info_user.dart';
 
-class DetailInfoLiveUserWidget extends StatelessWidget {
+class DetailInfoLiveUserWidget extends StatefulWidget {
   final UserModel user;
   const DetailInfoLiveUserWidget({
     Key? key,
     required this.user,
   }) : super(key: key);
 
+  @override
+  State<DetailInfoLiveUserWidget> createState() =>
+      _DetailInfoLiveUserWidgetState();
+}
+
+class _DetailInfoLiveUserWidgetState extends State<DetailInfoLiveUserWidget> {
+  bool isFollowing = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,13 +35,16 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CustomNetworkImage(
-                  urlToImage:
-                      "https://i.pinimg.com/originals/ca/33/57/ca335747b1f2b5b8611be00eb1307105.jpg",
-                  shape: BoxShape.rectangle,
-                  borderRadius: BorderRadius.circular(16.sp),
-                  width: 150.w,
-                  height: 150.sp,
+                GestureDetector(
+                  onTap: () {},
+                  child: CustomNetworkImage(
+                    urlToImage:
+                        "https://i.pinimg.com/originals/ca/33/57/ca335747b1f2b5b8611be00eb1307105.jpg",
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(16.sp),
+                    width: 150.w,
+                    height: 150.sp,
+                  ),
                 ),
                 Row(
                   children: [
@@ -51,12 +64,8 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
                               Container(
                                 constraints: BoxConstraints(maxWidth: 80.w),
                                 child: Text(
-                                  user.fullName,
-                                  style: TextStyle(
-                                    color: Theme.of(context).primaryColorLight,
-                                    fontSize: 13.sp,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                  widget.user.fullName,
+                                  style: text13mCL,
                                 ),
                               ),
                               SizedBox(width: 2.sp),
@@ -70,35 +79,39 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
                         ),
                         Text(
                           "@tonytonychopper",
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColorLight,
-                            fontSize: 9.sp,
-                            overflow: TextOverflow.ellipsis,
-                          ),
+                          style: text9mCL,
                         ),
                       ],
                     ),
                     const Spacer(),
-                    GestureDetector(
-                      onTap: () {},
+                    TouchableOpacity(
+                      onTap: () {
+                        setState(() {
+                          isFollowing = !isFollowing;
+                        });
+                      },
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 8.sp,
                           vertical: 4.sp,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.blue.shade700,
-                          borderRadius: BorderRadius.circular(
-                            15.sp,
-                          ),
+                          color: Colors.blueAccent,
+                          shape: isFollowing
+                              ? BoxShape.circle
+                              : BoxShape.rectangle,
+                          borderRadius: isFollowing
+                              ? null
+                              : BorderRadius.circular(
+                                  15.sp,
+                                ),
                         ),
-                        child: Text(
-                          "Follow",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 10.sp,
-                          ),
-                        ),
+                        child: isFollowing
+                            ? const Icon(Icons.how_to_reg_outlined)
+                            : Text(
+                                "Follow",
+                                style: text11mCL,
+                              ),
                       ),
                     ),
                   ],
@@ -118,7 +131,7 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
                   ),
                 ),
                 child: CustomNetworkImage(
-                  urlToImage: user.urlToImage,
+                  urlToImage: widget.user.urlToImage,
                   height: 60.sp,
                   width: 60.sp,
                 ),
@@ -130,16 +143,14 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.0.sp),
           child: Linkify(
-            onOpen: (link) async {},
-            text: user.description!,
+            onOpen: (link) async {
+              UrlLauncherHelper.launchUrlString(Uri.parse(link.url));
+            },
+            text: widget.user.description!,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).primaryColorLight,
-              fontSize: 9.sp,
-              height: 1.4,
-            ),
+            style: text9mCL,
             linkStyle: TextStyle(
               color: Theme.of(context).primaryColor,
               decoration: TextDecoration.underline,
@@ -153,7 +164,7 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
           children: [
             IndexInfoUser(
               titleIndex: "Posts",
-              numberIndex: user.posts!,
+              numberIndex: widget.user.posts!,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20.sp),
@@ -161,14 +172,15 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
               height: 80.sp,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.black26, Colors.white, Colors.black26],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter),
+                  colors: [Colors.black26, Colors.white, Colors.black26],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
             IndexInfoUser(
               titleIndex: "Following",
-              numberIndex: user.followings!,
+              numberIndex: widget.user.followings!,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20.sp),
@@ -176,35 +188,19 @@ class DetailInfoLiveUserWidget extends StatelessWidget {
               height: 80.sp,
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.black26, Colors.white, Colors.black26],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter),
+                  colors: [Colors.black26, Colors.white, Colors.black26],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
               ),
             ),
             IndexInfoUser(
               titleIndex: "Followers",
-              numberIndex: user.followers!,
+              numberIndex: widget.user.followers!,
             ),
           ],
         ),
         SizedBox(height: 5.sp),
-        // Wrap(
-        //   spacing: 5.sp,
-        //   runSpacing: -5.sp,
-        //   children: List.generate(
-        //     user.listFields!.length,
-        //     (index) => Chip(
-        //       backgroundColor: Colors.black12,
-        //       label: Text(
-        //         user.listFields![index],
-        //         style: TextStyle(
-        //           color: Theme.of(context).primaryColorLight,
-        //           fontSize: 13,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

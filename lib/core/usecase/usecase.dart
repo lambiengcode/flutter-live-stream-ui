@@ -1,0 +1,21 @@
+import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
+import 'package:streamskit_mobile/core/error/failure.dart';
+
+abstract class UseCase<Type, Params> {
+  Either<Failure, Type> call(Params params);
+}
+
+class NoParams extends Equatable {
+  @override
+  List<Object> get props => [];
+}
+
+class Params extends Equatable {
+  final Object object;
+
+  const Params({required this.object});
+
+  @override
+  List<Object> get props => [object];
+}

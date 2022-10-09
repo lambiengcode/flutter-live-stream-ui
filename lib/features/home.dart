@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
@@ -159,22 +160,15 @@ class _HomeState extends State<Home> {
                   color: index == _currentIndex ? mCL : fCL,
                 ),
               ),
-              Visibility(
-                visible: index == _currentIndex,
-                child: Column(
-                  children: [
-                    SizedBox(height: 2.sp),
-                    Container(
-                      height: 3.sp,
-                      width: 3.sp,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: mCH,
-                      ),
-                    ),
-                  ],
+              SizedBox(height: 4.sp),
+              Container(
+                height: 3.sp,
+                width: 3.sp,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: index == _currentIndex ? mCH : Colors.transparent,
                 ),
-              )
+              ),
             ],
           ),
         ),

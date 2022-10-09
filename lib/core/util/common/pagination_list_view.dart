@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:streamskit_mobile/core/app/constants.dart';
+import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 

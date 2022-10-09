@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 
 class CircleIcon extends StatelessWidget {
   final IconData icon;
@@ -17,7 +18,7 @@ class CircleIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return TouchableOpacity(
       onTap: onTap ?? () {},
       child: Container(
         padding: const EdgeInsets.all(8),
