@@ -7,6 +7,7 @@ class BaseLocalData {
     String path = await PathHelper.localStoreDirStreamOS;
     Hive.init(path);
     await Hive.openBox(StorageKeys.boxSystem);
+    await openBoxApp();
   }
 
   static Future<void> openBoxApp() async {

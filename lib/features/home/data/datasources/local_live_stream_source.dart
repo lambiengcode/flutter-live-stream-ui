@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:injectable/injectable.dart';
 import 'package:streamskit_mobile/core/app/constant/storage_keys.dart';
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 
@@ -8,9 +9,9 @@ abstract class LocalLiveStreamSource {
   void clearLiveStreams();
 }
 
+@LazySingleton(as: LocalLiveStreamSource)
 class LocalLiveStreamSourceImpl implements LocalLiveStreamSource {
-  final Box hiveBox;
-  const LocalLiveStreamSourceImpl({required this.hiveBox});
+  final Box hiveBox = Hive.box(StorageKeys.boxLiveStreams);
 
   @override
   List<LiveStreamModel> getLiveStreams() {
