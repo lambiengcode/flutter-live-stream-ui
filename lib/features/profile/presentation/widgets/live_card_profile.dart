@@ -27,7 +27,7 @@ class LiveCardProflie extends StatelessWidget {
             urlToImage: liveModel.image,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16.sp),
-            height: 175.sp,
+            height: double.infinity,
           ),
           liveModel.statusLive
               ? Positioned(
@@ -97,7 +97,7 @@ class LiveCardProflie extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             height: double.infinity,
             width: double.infinity,
-            padding: EdgeInsets.only(bottom: 16.sp, left: 8.sp),
+            padding: EdgeInsets.only(bottom: 8.sp, left: 8.sp),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.transparent, Colors.black.withOpacity(0.89)],
