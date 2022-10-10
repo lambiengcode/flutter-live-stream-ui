@@ -6,27 +6,30 @@ class ConversationModel {
   final String urlUserImage;
   final DateTime createdAt;
   final int countUnreadMessage;
+  final bool isSeen;
   ConversationModel({
     required this.fullName,
     required this.lastMessage,
     required this.urlUserImage,
     required this.createdAt,
     required this.countUnreadMessage,
+    required this.isSeen,
   });
 
-  ConversationModel copyWith({
-    String? fullName,
-    String? lastMessage,
-    String? urlUserImage,
-    DateTime? createdAt,
-    int? countUnreadMessage,
-  }) {
+  ConversationModel copyWith(
+      {String? fullName,
+      String? lastMessage,
+      String? urlUserImage,
+      DateTime? createdAt,
+      int? countUnreadMessage,
+      bool? isSeen}) {
     return ConversationModel(
       fullName: fullName ?? this.fullName,
       lastMessage: lastMessage ?? this.lastMessage,
       urlUserImage: urlUserImage ?? this.urlUserImage,
       createdAt: createdAt ?? this.createdAt,
       countUnreadMessage: countUnreadMessage ?? this.countUnreadMessage,
+      isSeen: isSeen ?? this.isSeen,
     );
   }
 
@@ -37,17 +40,18 @@ class ConversationModel {
       'urlUserImage': urlUserImage,
       'createdAt': createdAt.millisecondsSinceEpoch,
       'countUnreadMessage': countUnreadMessage,
+      'isSeen': isSeen,
     };
   }
 
   factory ConversationModel.fromMap(Map<String, dynamic> map) {
     return ConversationModel(
-      fullName: map['fullName'] ?? '',
-      lastMessage: map['lastMessage'] ?? '',
-      urlUserImage: map['urlUserImage'] ?? '',
-      createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
-      countUnreadMessage: map['countUnreadMessage']?.toInt() ?? 0,
-    );
+        fullName: map['fullName'] ?? '',
+        lastMessage: map['lastMessage'] ?? '',
+        urlUserImage: map['urlUserImage'] ?? '',
+        createdAt: DateTime.fromMillisecondsSinceEpoch(map['createdAt']),
+        countUnreadMessage: map['countUnreadMessage']?.toInt() ?? 0,
+        isSeen: map['isSeen'] ?? false);
   }
 
   String toJson() => json.encode(toMap());
@@ -69,7 +73,8 @@ class ConversationModel {
         other.lastMessage == lastMessage &&
         other.urlUserImage == urlUserImage &&
         other.createdAt == createdAt &&
-        other.countUnreadMessage == countUnreadMessage;
+        other.countUnreadMessage == countUnreadMessage &&
+        other.isSeen == isSeen;
   }
 
   @override
@@ -78,7 +83,8 @@ class ConversationModel {
         lastMessage.hashCode ^
         urlUserImage.hashCode ^
         createdAt.hashCode ^
-        countUnreadMessage.hashCode;
+        countUnreadMessage.hashCode ^
+        isSeen.hashCode;
   }
 }
 
@@ -89,19 +95,62 @@ List<ConversationModel> conversationFake = [
       urlUserImage:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShD1rBYj3o7UoD5vBdtlgAVcLh3bq-kAjwFw&usqp=CAU',
       createdAt: DateTime.now(),
-      countUnreadMessage: 2),
+      countUnreadMessage: 2,
+      isSeen: true),
   ConversationModel(
       fullName: 'Thánh Đỗ',
       lastMessage: 'Live Stream game đi anh ei!!!',
       urlUserImage:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvpUqkQzykHU3Jr8v9yhGkSbhL18lGd3ObzQ&usqp=CAU',
       createdAt: DateTime.now(),
-      countUnreadMessage: 3),
+      countUnreadMessage: 3,
+      isSeen: true),
   ConversationModel(
       fullName: 'Kẻ bí Ẩn',
       lastMessage: 'Live Stream lẹ đi',
       urlUserImage:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
       createdAt: DateTime.now(),
-      countUnreadMessage: 6),
+      countUnreadMessage: 6,
+      isSeen: false),
+  ConversationModel(
+      fullName: 'Kẻ bí Ẩn',
+      lastMessage: 'Live Stream lẹ đi',
+      urlUserImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
+      createdAt: DateTime.now(),
+      countUnreadMessage: 6,
+      isSeen: false),
+  ConversationModel(
+      fullName: 'Kẻ bí Ẩn',
+      lastMessage: 'Live Stream lẹ đi',
+      urlUserImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
+      createdAt: DateTime.now(),
+      countUnreadMessage: 6,
+      isSeen: false),
+  ConversationModel(
+      fullName: 'Kẻ bí Ẩn',
+      lastMessage: 'Live Stream lẹ đi',
+      urlUserImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
+      createdAt: DateTime.now(),
+      countUnreadMessage: 6,
+      isSeen: true),
+  ConversationModel(
+      fullName: 'Kẻ bí Ẩn',
+      lastMessage: 'Live Stream lẹ đi',
+      urlUserImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
+      createdAt: DateTime.now(),
+      countUnreadMessage: 6,
+      isSeen: true),
+  ConversationModel(
+      fullName: 'Kẻ bí Ẩn',
+      lastMessage: 'Live Stream lẹ đi',
+      urlUserImage:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfaZBAHVPJ6xRNWZqOH_zxfa5YpSqdcdxiVw&usqp=CAU',
+      createdAt: DateTime.now(),
+      countUnreadMessage: 6,
+      isSeen: true),
 ];

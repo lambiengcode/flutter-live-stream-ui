@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/chat_style.dart';
 import 'package:streamskit_mobile/features/chat/data/conversation_model.dart';
-import 'package:streamskit_mobile/features/chat/presentation/widgets/conversation_card.dart';
+import 'package:streamskit_mobile/features/chat/presentation/widgets/bottom_chat_options.dart';
+import 'package:streamskit_mobile/features/chat/presentation/widgets/chat_card.dart';
 import 'package:streamskit_mobile/features/chat/presentation/widgets/search_box.dart';
 import 'package:streamskit_mobile/features/chat/presentation/widgets/user_connect_widget.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
@@ -16,6 +18,19 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
+  _showBottomSheetOptions() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isDismissible: true,
+      isScrollControlled: true,
+      barrierColor: Colors.black38,
+      builder: (context) {
+        return const BottomChatOptions();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,10 +78,15 @@ class _ChatScreenState extends State<ChatScreen> {
           Expanded(
             child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                padding: EdgeInsets.symmetric(horizontal: 16.sp)
+                    .add(EdgeInsets.only(bottom: 78.sp)),
                 itemBuilder: (context, index) {
-                  return ConversationCard(
-                      conversationModel: conversationFake[index]);
+                  return TouchableOpacity(
+                      onLongPress: () {
+                        _showBottomSheetOptions();
+                      },
+                      child:
+                          ChatCard(conversationModel: conversationFake[index]));
                 },
                 itemCount: conversationFake.length),
           ),

@@ -4,16 +4,15 @@ import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/chat/data/conversation_model.dart';
 
-class ConversationCard extends StatefulWidget {
+class ChatCard extends StatefulWidget {
   final ConversationModel conversationModel;
-  const ConversationCard({Key? key, required this.conversationModel})
-      : super(key: key);
+  const ChatCard({Key? key, required this.conversationModel}) : super(key: key);
 
   @override
-  State<ConversationCard> createState() => _ConversationCardState();
+  State<ChatCard> createState() => _ChatCardState();
 }
 
-class _ConversationCardState extends State<ConversationCard> {
+class _ChatCardState extends State<ChatCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -70,24 +69,31 @@ class _ConversationCardState extends State<ConversationCard> {
                     Expanded(
                       child: Text(
                         widget.conversationModel.lastMessage,
-                        style: TextStyle(fontSize: 10.sp, color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 10.sp,
+                            color: widget.conversationModel.isSeen
+                                ? Colors.grey
+                                : Colors.white),
                       ),
                     ),
-                    Container(
-                      padding: EdgeInsets.all(4.sp),
-                      width: 14.sp,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.blue,
-                      ),
-                      child: Center(
-                        child: Text(
-                          widget.conversationModel.countUnreadMessage
-                              .toString(),
-                          style: TextStyle(fontSize: 8.sp, color: Colors.white),
-                        ),
-                      ),
-                    )
+                    widget.conversationModel.isSeen == true
+                        ? const SizedBox()
+                        : Container(
+                            padding: EdgeInsets.all(4.sp),
+                            width: 14.sp,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: colorPink,
+                            ),
+                            child: Center(
+                              child: Text(
+                                widget.conversationModel.countUnreadMessage
+                                    .toString(),
+                                style: TextStyle(
+                                    fontSize: 8.sp, color: Colors.white),
+                              ),
+                            ),
+                          )
                   ],
                 ),
               ],
