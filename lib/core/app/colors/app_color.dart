@@ -30,6 +30,7 @@ Color mCU = Colors.grey.shade300;
 Color mCH = Colors.grey.shade400;
 Color mGB = Colors.grey.shade500;
 Color mGM = Colors.grey.shade700;
+Color mGE = Colors.grey.shade800;
 Color mGD = Colors.grey.shade900;
 Color mCD = Colors.black.withOpacity(0.075);
 Color mCC = Colors.green.withOpacity(0.65);
