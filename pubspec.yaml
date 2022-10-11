@@ -49,9 +49,11 @@ dependencies:
   # UI Helper
   flutter_linkify: ^5.0.2
   url_launcher: ^6.1.5
+  intl: ^0.17.0
 
   # Image
   cached_network_image: ^3.2.1
+  image_picker: ^0.8.6
 
   # Dependency Injection
   get_it: ^7.2.0
@@ -65,6 +67,9 @@ dependencies:
   dartz: ^0.10.1
   rxdart: ^0.27.5
   path_provider: ^2.0.11
+
+  # Permission
+  sms_autofill: ^2.2.0
 
 dev_dependencies:
   flutter_lints: ^2.0.1
