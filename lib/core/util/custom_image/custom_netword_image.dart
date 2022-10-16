@@ -40,7 +40,7 @@ class CustomNetworkImage extends StatelessWidget {
         ? placeholderWidget ??
             DefaultImage(
               height: height ?? width!,
-              width: height ?? width!,
+              width: width ?? height!,
               margin: margin,
               shape: shape,
               borderRadius: borderRadius,
@@ -79,7 +79,7 @@ class CustomNetworkImage extends StatelessWidget {
                   margin: margin,
                   child: PlaceHolderImage(
                     height: height ?? width!,
-                    width: height ?? width!,
+                    width: width ?? height!,
                     shape: shape,
                     borderRadius: borderRadius,
                   ),
@@ -88,7 +88,7 @@ class CustomNetworkImage extends StatelessWidget {
                 placeholderWidget ??
                 DefaultImage(
                   height: height ?? width!,
-                  width: height ?? width!,
+                  width: width ?? height!,
                   margin: margin,
                   shape: shape,
                   borderRadius: borderRadius,
