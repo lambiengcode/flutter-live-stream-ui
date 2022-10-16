@@ -314,29 +314,3 @@ class _ProfileScreenState extends State<ProfileScreen>
       followings: 8543337121,
       listFields: listFieldLive);
 }
-
-String formatNumberViewer(int number) {
-  if (number <= 0) return "0";
-  if (number < 950) {
-    return number.toString();
-  } else if (number >= 950 && number < 950000) {
-    return '${(number / 1000).toStringAsFixed(1)}K';
-  } else if (number >= 950000 && number < 950000000) {
-    return '${(number / 1000000).toStringAsFixed(1)}M';
-  } else {
-    return '${(number / 1000000000).toStringAsFixed(1)}B';
-  }
-}
-
-String formatNumberIndex(int number) {
-  if (number <= 0) return "0";
-  if (number < 9500) {
-    return number.toString();
-  } else if (number >= 9500 && number < 950000) {
-    return '${(number / 1000).toStringAsFixed(1)}K';
-  } else if (number >= 950000 && number < 950000000) {
-    return '${(number / 1000000).toStringAsFixed(1)}M';
-  } else {
-    return '${(number / 1000000000).toStringAsFixed(1)}B';
-  }
-}

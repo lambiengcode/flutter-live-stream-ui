@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
+import 'package:streamskit_mobile/core/util/numeral/numeral.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class ViewerWidget extends StatefulWidget {
   const ViewerWidget({Key? key}) : super(key: key);
@@ -35,7 +35,7 @@ class _ViewerWidgetState extends State<ViewerWidget> {
               width: 2.sp,
             ),
             Text(
-              formatNumberIndex(55411),
+              const Numeral(55411).format(),
               style: TextStyle(fontSize: 11.sp, color: Colors.white),
             ),
             SizedBox(
