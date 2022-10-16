@@ -47,6 +47,11 @@ class CustomNetworkImage extends StatelessWidget {
               childInAvatar: childInAvatar,
             )
         : CachedNetworkImage(
+            cacheKey: urlToImage,
+            memCacheHeight: 1024 * 200,
+            memCacheWidth: 1024 * 200,
+            maxWidthDiskCache: 1024 * 1024,
+            maxHeightDiskCache: 1024 * 1024,
             placeholderFadeInDuration: const Duration(milliseconds: delay200ms),
             fadeInDuration: const Duration(milliseconds: delay200ms),
             fadeOutDuration: const Duration(milliseconds: delay200ms),

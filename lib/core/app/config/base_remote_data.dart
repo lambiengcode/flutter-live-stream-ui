@@ -6,17 +6,24 @@ import 'dart:convert' as convert;
 import 'package:flutter/foundation.dart';
 
 // Package imports:
+import 'package:cookie_jar/cookie_jar.dart';
 import 'package:dio/dio.dart' as diox;
+import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
+import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
+import 'package:dio_cookie_manager/dio_cookie_manager.dart';
+import 'package:dio_smart_retry/dio_smart_retry.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/types/http_status_code.dart';
 import 'package:streamskit_mobile/core/types/service_method.dart';
+import 'package:streamskit_mobile/core/util/dio_transformer.dart';
 import 'package:streamskit_mobile/core/util/logger.dart';
+import 'package:streamskit_mobile/core/util/path_helper.dart';
 import 'package:streamskit_mobile/core/util/stop_watch_api.dart';
 
 class BaseRemoteData {
-  var dio = diox.Dio(diox.BaseOptions(
+  static diox.Dio dio = diox.Dio(diox.BaseOptions(
     baseUrl: serviceBaseEndpoint,
     connectTimeout: connectTimeOut,
     receiveTimeout: receiveTimeOut,
@@ -276,6 +283,60 @@ class BaseRemoteData {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
     };
+  }
+
+  static Future<void> configureDio() async {
+    // Integration cookie
+    String tempDir = await PathHelper.tempDirStreamOS;
+    String localHiveDir = await PathHelper.localStoreDirStreamOS;
+    final PersistCookieJar cookieJar = PersistCookieJar(
+      storage: FileStorage(tempDir),
+    );
+    dio.interceptors.add(CookieManager(cookieJar));
+
+    // Integration retry
+    dio.interceptors.add(RetryInterceptor(
+      dio: dio,
+      logPrint: print, // specify log function (optional)
+      retries: 3, // retry count (optional)
+      retryDelays: const [
+        // set delays between retries (optional)
+        Duration(seconds: 1), // wait 1 sec before first retry
+        Duration(seconds: 2), // wait 2 sec before second retry
+        Duration(seconds: 3), // wait 3 sec before third retry
+      ],
+    ));
+
+    // Integration cache
+    final CacheOptions cacheOptions = CacheOptions(
+      // A default store is required for interceptor.
+      store: HiveCacheStore(localHiveDir),
+
+      // All subsequent fields are optional.
+      // Default.
+      policy: CachePolicy.request,
+      // Returns a cached response on error but for statuses 401 & 403.
+      // Also allows to return a cached response on network errors (e.g. offline usage).
+      // Defaults to [null].
+      hitCacheOnErrorExcept: [StatusCode.unauthorized, StatusCode.forbiden],
+      // Overrides any HTTP directive to delete entry past this duration.
+      // Useful only when origin server has no cache config or custom behaviour is desired.
+      // Defaults to [null].
+      maxStale: const Duration(milliseconds: connectTimeOut),
+      // Default. Allows 3 cache sets and ease cleanup.
+      priority: CachePriority.normal,
+      // Default. Body and headers encryption with your own algorithm.
+      cipher: null,
+      // Default. Key builder to retrieve requests.
+      keyBuilder: CacheOptions.defaultCacheKeyBuilder,
+      // Default. Allows to cache POST requests.
+      // Overriding [keyBuilder] is strongly recommended when [true].
+      allowPostMethod: false,
+    );
+    dio.interceptors.add(DioCacheInterceptor(options: cacheOptions));
+
+    // Transform
+    dio.transformer = DioTransformer(); // replace dio default transformer
   }
 
   printEndpoint(String method, String endpoint) {

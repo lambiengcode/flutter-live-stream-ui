@@ -79,18 +79,22 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
           Expanded(
             child: ListView.builder(
-                physics: const BouncingScrollPhysics(),
-                padding: EdgeInsets.symmetric(horizontal: 16.sp)
-                    .add(EdgeInsets.only(bottom: 78.sp)),
-                itemBuilder: (context, index) {
-                  return TouchableOpacity(
-                      onLongPress: () {
-                        _showBottomSheetOptions();
-                      },
-                      child:
-                          ChatCard(conversationModel: conversationFake[index]));
-                },
-                itemCount: conversationFake.length),
+              physics: const BouncingScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 16.sp).add(
+                EdgeInsets.only(bottom: 78.sp),
+              ),
+              itemBuilder: (context, index) {
+                return TouchableOpacity(
+                  onLongPress: () {
+                    _showBottomSheetOptions();
+                  },
+                  child: ChatCard(
+                    conversationModel: conversationFake[index],
+                  ),
+                );
+              },
+              itemCount: conversationFake.length,
+            ),
           ),
         ],
       ),

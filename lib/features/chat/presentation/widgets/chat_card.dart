@@ -9,7 +9,10 @@ import 'package:streamskit_mobile/features/chat/data/conversation_model.dart';
 
 class ChatCard extends StatefulWidget {
   final ConversationModel conversationModel;
-  const ChatCard({Key? key, required this.conversationModel}) : super(key: key);
+  const ChatCard({
+    Key? key,
+    required this.conversationModel,
+  }) : super(key: key);
 
   @override
   State<ChatCard> createState() => _ChatCardState();
@@ -26,7 +29,6 @@ class _ChatCardState extends State<ChatCard> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
-            // padding: EdgeInsets.all(3.5.sp),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(
