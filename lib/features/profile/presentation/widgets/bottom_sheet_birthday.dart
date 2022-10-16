@@ -44,7 +44,7 @@ class _BottomSheetBirthdayState extends State<BottomSheetBirthday> {
       ),
       child: Column(
         children: [
-          const DividerBottomSheet(), 
+          const DividerBottomSheet(),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0.sp, vertical: 12.sp),
             child: Row(
