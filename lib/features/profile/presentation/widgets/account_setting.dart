@@ -6,8 +6,9 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
+import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/edit_profile_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/row_icon_text.dart';
 
 class AccountSetting extends StatelessWidget {
@@ -36,10 +37,8 @@ class AccountSetting extends StatelessWidget {
           textStyle: TextStyle(color: mCL, fontSize: 11.sp),
           iconLeading: PhosphorIcons.user_thin,
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => const EditProfileScreen(),
-              ),
+            AppNavigator.push(
+              Routes.editProfileRoute,
             );
           },
         ),
