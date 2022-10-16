@@ -1,5 +1,7 @@
+// Dart imports:
 import 'dart:convert';
 
+// Project imports:
 import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
 
 class CategoryModel {

@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
 
 class DefaultImage extends StatelessWidget {

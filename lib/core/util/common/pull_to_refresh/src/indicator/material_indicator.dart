@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart'
     hide RefreshIndicator, RefreshIndicatorState;
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
 
 // How much the scroll's drag gesture can overshoot the RefreshIndicator's

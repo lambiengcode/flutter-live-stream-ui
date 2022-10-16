@@ -2,8 +2,14 @@
 
 import 'package:flutter/material.dart'
     hide RefreshIndicator, RefreshIndicatorState;
+
+// Dart imports:
 import 'dart:math' as math;
+
+// Flutter imports:
 import 'package:flutter/physics.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
 
 enum BezierDismissType { None, RectSpread, ScaleToCenter }

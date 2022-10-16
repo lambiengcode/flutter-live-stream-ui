@@ -1,13 +1,16 @@
 // ignore_for_file: overridden_fields, annotate_overrides, constant_identifier_names
 
+// Flutter imports:
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter/foundation.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/src/internals/slivers.dart';
-import 'internals/indicator_wrap.dart';
-import 'internals/refresh_physics.dart';
 import 'indicator/classic_indicator.dart';
 import 'indicator/material_indicator.dart';
+import 'internals/indicator_wrap.dart';
+import 'internals/refresh_physics.dart';
 
 // ignore_for_file: INVALID_USE_OF_PROTECTED_MEMBER
 // ignore_for_file: INVALID_USE_OF_VISIBLE_FOR_TESTING_MEMBER

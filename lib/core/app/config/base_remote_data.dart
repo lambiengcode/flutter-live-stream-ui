@@ -1,7 +1,14 @@
+// Dart imports:
 import 'dart:async';
 import 'dart:convert' as convert;
-import 'package:dio/dio.dart' as diox;
+
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
+import 'package:dio/dio.dart' as diox;
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/types/http_status_code.dart';
 import 'package:streamskit_mobile/core/types/service_method.dart';

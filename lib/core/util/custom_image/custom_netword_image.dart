@@ -1,5 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/util/custom_image/default_image.dart';
 import 'package:streamskit_mobile/core/util/custom_image/place_holder_image.dart';

@@ -1,8 +1,11 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:flutter_test/flutter_test.dart';
-import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 
+// Project imports:
+import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 void main() {

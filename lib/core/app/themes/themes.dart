@@ -1,6 +1,11 @@
+// Dart imports:
 import 'dart:io';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 
 class AppTheme {
