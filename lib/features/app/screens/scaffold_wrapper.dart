@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 
 class ScaffoldWrapper extends StatelessWidget {

@@ -1,10 +1,8 @@
 // Flutter imports:
 import 'package:flutter/material.dart';
 
-// Package imports:
-import 'package:streamskit_mobile/core/app/colors/app_color.dart';
-
 // Project imports:
+import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/style.dart';
 import 'package:streamskit_mobile/features/app/screens/scaffold_wrapper.dart';

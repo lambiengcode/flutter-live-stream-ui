@@ -1,6 +1,9 @@
-import 'package:streamskit_mobile/core/usecase/usecase.dart';
-import 'package:streamskit_mobile/core/error/failure.dart';
+// Package imports:
 import 'package:dartz/dartz.dart';
+
+// Project imports:
+import 'package:streamskit_mobile/core/error/failure.dart';
+import 'package:streamskit_mobile/core/usecase/usecase.dart';
 import 'package:streamskit_mobile/features/auth/data/datasources/auth_local_datasource.dart';
 import 'package:streamskit_mobile/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:streamskit_mobile/features/auth/domain/entities/social.dart';
