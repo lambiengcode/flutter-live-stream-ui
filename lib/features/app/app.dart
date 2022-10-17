@@ -8,9 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/app/themes/themes.dart';
 import 'package:streamskit_mobile/core/navigator/app_pages.dart';
-import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/util/after_layout_mixin.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/features/home.dart';
+import 'package:streamskit_mobile/features/home/presentation/splash_screen.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -22,7 +23,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> with AfterLayoutMixin {
-  // bool _isInitial = true;
+  bool _isInitial = true;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,7 @@ class _AppState extends State<App> with AfterLayoutMixin {
           onGenerateRoute: (settings) {
             return AppNavigator().getRoute(settings);
           },
-          initialRoute: Routes.rootRoute,
+          home: _isInitial ? const SplashScreen() : const Home(),
         );
       }),
     );
@@ -47,9 +48,9 @@ class _AppState extends State<App> with AfterLayoutMixin {
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) {
     Future.delayed(const Duration(milliseconds: delayASecond), () {
-      // setState(() {
-      //   _isInitial = false;
-      // });
+      setState(() {
+        _isInitial = false;
+      });
     });
   }
 }
