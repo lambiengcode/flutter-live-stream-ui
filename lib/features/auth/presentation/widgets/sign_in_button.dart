@@ -6,13 +6,11 @@ import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 
 class SignInButton extends StatelessWidget {
   final String title;
-  final IconData icon;
-  final Color color;
+  final String iconAsset;
 
   const SignInButton({
     super.key,
-    required this.icon,
-    required this.color,
+    required this.iconAsset,
     required this.title,
   });
   @override
@@ -27,11 +25,12 @@ class SignInButton extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(width: 16.w),
-          Icon(
-            icon,
-            size: 18.sp,
-            color: color,
+          SizedBox(width: 14.5.w),
+          Image.asset(
+            iconAsset,
+            height: 16.sp,
+            width: 16.sp,
+            fit: BoxFit.contain,
           ),
           SizedBox(width: 10.sp),
           Text(
@@ -39,7 +38,7 @@ class SignInButton extends StatelessWidget {
             style: TextStyle(
               color: Theme.of(context).scaffoldBackgroundColor,
               fontWeight: FontWeight.w700,
-              fontSize: 12.sp,
+              fontSize: 11.5.sp,
             ),
           ),
         ],

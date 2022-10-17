@@ -8,3 +8,7 @@ abstract class Failure extends Equatable {
 
 // General failures
 class CannotFoundItem extends Failure {}
+
+class CannotParseItem extends Failure {}
+
+class NullValue extends Failure {}

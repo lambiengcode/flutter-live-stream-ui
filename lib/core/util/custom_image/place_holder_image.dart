@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/shimmer/fade_shimmer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 
 class PlaceHolderImage extends StatelessWidget {
   final double height;

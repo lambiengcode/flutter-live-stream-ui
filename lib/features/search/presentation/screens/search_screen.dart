@@ -7,7 +7,6 @@ import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
 import 'package:streamskit_mobile/core/util/styles/search_style.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/profile/data/list_live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/gribview_live_card.dart';

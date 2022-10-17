@@ -10,7 +10,7 @@ import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.da
 import 'package:streamskit_mobile/core/util/numeral/numeral.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/core/util/styles/style.dart';
 import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
 
 class LiveCardProflie extends StatelessWidget {

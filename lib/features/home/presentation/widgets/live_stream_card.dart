@@ -12,7 +12,7 @@ import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/core/util/styles/style.dart';
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 
 class LiveStreamCard extends StatelessWidget {
