@@ -114,12 +114,12 @@ class AppColors {
       accent: const Color(0xFF17c063),
       disabled: Colors.black12,
       error: const Color(0xFFFF7466),
-      divider: Colors.black26,
+      divider: Colors.white24,
       dividerBackgroundColor: Colors.black54,
       button: const Color(0xFF657786),
-      contentText1: colorBlack,
-      contentText2: colorBlack,
-      subText1: mGD,
+      contentText1: mCL,
+      contentText2: mC,
+      subText1: mCH,
       subText2: mGB,
     );
   }

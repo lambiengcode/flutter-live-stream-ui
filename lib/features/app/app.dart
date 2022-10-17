@@ -9,7 +9,7 @@ import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/app/themes/themes.dart';
 import 'package:streamskit_mobile/core/util/after_layout_mixin.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/features/home.dart';
+import 'package:streamskit_mobile/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:streamskit_mobile/features/home/presentation/splash_screen.dart';
 
 class App extends StatefulWidget {
@@ -33,7 +33,7 @@ class _AppState extends State<App> with AfterLayoutMixin {
           theme: AppTheme.light().data,
           darkTheme: AppTheme.dark().data,
           themeMode: ThemeMode.dark,
-          home: _isInitial ? const SplashScreen() : const Home(),
+          home: _isInitial ? const SplashScreen() : const SignInScreen(),
         );
       }),
     );
