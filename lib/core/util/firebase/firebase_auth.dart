@@ -40,7 +40,9 @@ Future<SocialValue?> signInWithGoogle() async {
   }
 }
 
-Future<SocialValue?> signInWithFacebook(LoginBehavior behavior) async {
+Future<SocialValue?> signInWithFacebook({
+  LoginBehavior behavior = LoginBehavior.nativeOnly,
+}) async {
   try {
     await FacebookAuth.instance.logOut();
     // FacebookAuth.instance.expressLogin();
@@ -65,7 +67,7 @@ Future<SocialValue?> signInWithFacebook(LoginBehavior behavior) async {
         break;
     }
 
-    return signInWithFacebook(LoginBehavior.webOnly);
+    return signInWithFacebook(behavior: LoginBehavior.webOnly);
   } catch (error) {
     return null;
   }

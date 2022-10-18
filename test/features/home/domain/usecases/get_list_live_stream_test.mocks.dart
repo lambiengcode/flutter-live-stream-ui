@@ -3,14 +3,12 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-
-// Dart imports:
-import 'dart:ui' as _i2;
-
-// Package imports:
+import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-
+import 'package:streamskit_mobile/core/error/failure.dart' as _i4;
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart'
+    as _i5;
+import 'package:streamskit_mobile/features/home/domain/repositories/live_stream_repository.dart'
     as _i3;
 
 // ignore_for_file: type=lint
@@ -24,8 +22,8 @@ import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dar
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeColor_0 extends _i1.SmartFake implements _i2.Color {
-  _FakeColor_0(
+class _FakeEither_0<L, R> extends _i1.SmartFake implements _i2.Either<L, R> {
+  _FakeEither_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -34,96 +32,32 @@ class _FakeColor_0 extends _i1.SmartFake implements _i2.Color {
         );
 }
 
-class _FakeLiveStreamModel_1 extends _i1.SmartFake
-    implements _i3.LiveStreamModel {
-  _FakeLiveStreamModel_1(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-/// A class which mocks [LiveStreamModel].
+/// A class which mocks [LiveStreamRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockLiveStreamModel extends _i1.Mock implements _i3.LiveStreamModel {
-  MockLiveStreamModel() {
-    _i1.throwOnMissingStub(this);
-  }
-
+class MockLiveStreamRepository extends _i1.Mock
+    implements _i3.LiveStreamRepository {
   @override
-  int get peopleParticipant => (super.noSuchMethod(
-        Invocation.getter(#peopleParticipant),
-        returnValue: 0,
-      ) as int);
-  @override
-  int get type => (super.noSuchMethod(
-        Invocation.getter(#type),
-        returnValue: 0,
-      ) as int);
-  @override
-  String get urlToImage => (super.noSuchMethod(
-        Invocation.getter(#urlToImage),
-        returnValue: '',
-      ) as String);
-  @override
-  String get getTitleType => (super.noSuchMethod(
-        Invocation.getter(#getTitleType),
-        returnValue: '',
-      ) as String);
-  @override
-  _i2.Color get getColorType => (super.noSuchMethod(
-        Invocation.getter(#getColorType),
-        returnValue: _FakeColor_0(
-          this,
-          Invocation.getter(#getColorType),
-        ),
-      ) as _i2.Color);
-  @override
-  _i3.LiveStreamModel copyWith({
-    int? peopleParticipant,
-    int? type,
-    String? urlToImage,
-  }) =>
+  _i2.Either<_i4.Failure, List<_i5.LiveStreamModel>> getLiveStreams() =>
       (super.noSuchMethod(
         Invocation.method(
-          #copyWith,
+          #getLiveStreams,
           [],
-          {
-            #peopleParticipant: peopleParticipant,
-            #type: type,
-            #urlToImage: urlToImage,
-          },
         ),
-        returnValue: _FakeLiveStreamModel_1(
+        returnValue: _FakeEither_0<_i4.Failure, List<_i5.LiveStreamModel>>(
           this,
           Invocation.method(
-            #copyWith,
+            #getLiveStreams,
             [],
-            {
-              #peopleParticipant: peopleParticipant,
-              #type: type,
-              #urlToImage: urlToImage,
-            },
           ),
         ),
-      ) as _i3.LiveStreamModel);
-  @override
-  Map<String, dynamic> toMap() => (super.noSuchMethod(
-        Invocation.method(
-          #toMap,
-          [],
+        returnValueForMissingStub:
+            _FakeEither_0<_i4.Failure, List<_i5.LiveStreamModel>>(
+          this,
+          Invocation.method(
+            #getLiveStreams,
+            [],
+          ),
         ),
-        returnValue: <String, dynamic>{},
-      ) as Map<String, dynamic>);
-  @override
-  String toJson() => (super.noSuchMethod(
-        Invocation.method(
-          #toJson,
-          [],
-        ),
-        returnValue: '',
-      ) as String);
+      ) as _i2.Either<_i4.Failure, List<_i5.LiveStreamModel>>);
 }

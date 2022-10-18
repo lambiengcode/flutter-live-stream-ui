@@ -17,7 +17,7 @@ class AuthLocalDataSourceImpl implements AuthLocalDataSource {
 
   @override
   void clearAccessToken() {
-    hiveBox.clear();
+    hiveBox.delete(StorageKeys.accessToken);
   }
 
   @override

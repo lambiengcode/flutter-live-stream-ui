@@ -9,4 +9,6 @@ abstract class AuthRepository {
   Future<Either<Failure, bool>> signIn(Params params);
 
   Either<Failure, bool> checkSignined();
+
+  Either<Failure, bool> signOut();
 }

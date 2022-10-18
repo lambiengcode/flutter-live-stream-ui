@@ -7,6 +7,8 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/features/app/bloc/app_bloc.dart';
+import 'package:streamskit_mobile/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/row_icon_text.dart';
 
 class LoginSetting extends StatelessWidget {
@@ -43,7 +45,9 @@ class LoginSetting extends StatelessWidget {
           sizeLeading: 15.sp,
           textStyle: TextStyle(color: mCL, fontSize: 11.sp),
           iconLeading: PhosphorIcons.sign_out,
-          onTap: () {},
+          onTap: () {
+            AppBloc.authBloc.add(SignOutEvent());
+          },
         ),
       ],
     );

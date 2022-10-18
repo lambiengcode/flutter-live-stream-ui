@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Analyze
+    name: Analyze & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -16,6 +16,7 @@ jobs:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
         with:
-          flutter-version: "3.3.3"
+          flutter-version: "3.3.4"
       - run: flutter pub get
       - run: flutter analyze
+      - run: flutter test

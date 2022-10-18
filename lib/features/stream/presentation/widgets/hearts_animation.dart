@@ -1,4 +1,6 @@
 // Dart imports:
+// ignore_for_file: depend_on_referenced_packages
+
 import 'dart:math' as math;
 import 'dart:ui';
 

@@ -5,8 +5,6 @@ flutter format .
 printf "\e[33;1m%s\e[0m\n" 'Finished running the Flutter formatter'
 printf "\e[33;1m%s\e[0m\n" 'Running the import_sorter'
 flutter pub run import_sorter:main
-git add .
-git commit -m "auto: import_sorter"
 printf "\e[33;1m%s\e[0m\n" 'Finished running the import_sorter'
 
 branch="$(git rev-parse --abbrev-ref HEAD)"

@@ -22,6 +22,21 @@
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.streams.kit</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<!-- <string>fb1136908073738095</string> -->
+				<string>com.googleusercontent.apps.38681732543-a1c15bbp5qra3vdf4c26f8h4qj4mp8hm</string>
+				<string>https</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>

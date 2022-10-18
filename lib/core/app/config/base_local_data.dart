@@ -14,6 +14,7 @@ class BaseLocalData {
   }
 
   static Future<void> openBoxApp() async {
+    await Hive.openBox(StorageKeys.boxAuth);
     await Hive.openBox(StorageKeys.boxUser);
     await Hive.openBox(StorageKeys.boxLiveStreams);
   }
