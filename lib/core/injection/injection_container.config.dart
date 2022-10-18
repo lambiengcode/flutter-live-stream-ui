@@ -5,19 +5,23 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
+// Package imports:
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
+// Project imports:
 import '../../features/app/bloc/app_bloc.dart' as _i3;
 import '../../features/auth/data/datasources/auth_local_datasource.dart' as _i4;
-import '../../features/auth/data/datasources/auth_remote_datasource.dart'
-    as _i5;
 import '../../features/auth/data/repositories/auth_repository_impl.dart' as _i7;
 import '../../features/auth/domain/repositories/auth_repository.dart' as _i6;
 import '../../features/auth/domain/usecases/check_logined.dart' as _i8;
 import '../../features/auth/domain/usecases/sign_in_with_social.dart' as _i10;
 import '../../features/auth/domain/usecases/sign_out.dart' as _i11;
 import '../../features/auth/presentation/bloc/auth_bloc.dart' as _i12;
+
+import '../../features/auth/data/datasources/auth_remote_datasource.dart'
+    as _i5;
 import '../../features/home/data/datasources/local_live_stream_source.dart'
     as _i9;
 import '../../features/home/data/repositories/live_stream_repository_impl.dart'

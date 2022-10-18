@@ -10,7 +10,6 @@ import 'package:streamskit_mobile/core/usecase/usecase.dart';
 import 'package:streamskit_mobile/features/auth/domain/entities/social.dart';
 import 'package:streamskit_mobile/features/auth/domain/repositories/auth_repository.dart';
 import 'package:streamskit_mobile/features/auth/domain/usecases/sign_in_with_social.dart';
-
 import 'sign_in_with_social_test.mocks.dart';
 
 @GenerateNiceMocks([MockSpec<AuthRepository>()])

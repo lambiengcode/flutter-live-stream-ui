@@ -3,12 +3,18 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
+// Dart imports:
 import 'dart:async' as _i4;
 
+// Package imports:
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
+
+// Project imports:
 import 'package:streamskit_mobile/core/error/failure.dart' as _i5;
 import 'package:streamskit_mobile/core/usecase/usecase.dart' as _i6;
+
 import 'package:streamskit_mobile/features/auth/domain/repositories/auth_repository.dart'
     as _i3;
 
