@@ -8,6 +8,7 @@ import 'package:streamskit_mobile/features/chat/presentation/widgets/bottom_chat
 import 'package:streamskit_mobile/features/chat/presentation/widgets/chat_card.dart';
 import 'package:streamskit_mobile/features/chat/presentation/widgets/search_box.dart';
 import 'package:streamskit_mobile/features/chat/presentation/widgets/user_connect_widget.dart';
+import 'package:streamskit_mobile/features/conversation/presentation/screens/conversation_screen.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -82,6 +83,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     .add(EdgeInsets.only(bottom: 78.sp)),
                 itemBuilder: (context, index) {
                   return TouchableOpacity(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => ConversationScreen(
+                                conversationModel: conversationFake[index]),
+                          ),
+                        );
+                      },
                       onLongPress: () {
                         _showBottomSheetOptions();
                       },

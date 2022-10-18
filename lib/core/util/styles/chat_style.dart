@@ -19,3 +19,6 @@ Divider dividerChatWithPadding(context) {
     endIndent: 12.sp,
   );
 }
+
+const colorTextChatCard = Color(0xFF53596F);
+const colorTextChatCardDark = Color(0xFFe2e3e9);
