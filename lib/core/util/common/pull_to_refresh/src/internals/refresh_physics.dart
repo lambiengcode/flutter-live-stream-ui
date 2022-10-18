@@ -1,9 +1,13 @@
 // ignore_for_file: invalid_use_of_visible_for_testing_member, invalid_use_of_protected_member
 
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
+// Dart imports:
 import 'dart:math' as math;
 
+// Flutter imports:
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/src/internals/slivers.dart';
 

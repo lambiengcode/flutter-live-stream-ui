@@ -1,10 +1,15 @@
+// Dart imports:
 import 'dart:async';
 
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/app/themes/themes.dart';
+import 'package:streamskit_mobile/core/util/after_layout_mixin.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/features/home.dart';
+import 'package:streamskit_mobile/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:streamskit_mobile/features/home/presentation/splash_screen.dart';
 
 class App extends StatefulWidget {
@@ -16,18 +21,8 @@ class App extends StatefulWidget {
   }
 }
 
-class _AppState extends State<App> {
+class _AppState extends State<App> with AfterLayoutMixin {
   bool _isInitial = true;
-
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(milliseconds: delayASecond), () {
-      setState(() {
-        _isInitial = false;
-      });
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +33,18 @@ class _AppState extends State<App> {
           theme: AppTheme.light().data,
           darkTheme: AppTheme.dark().data,
           themeMode: ThemeMode.dark,
-          home: _isInitial ? const SplashScreen() : const Home(),
+          home: _isInitial ? const SplashScreen() : const SignInScreen(),
         );
       }),
     );
+  }
+
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: delayASecond), () {
+      setState(() {
+        _isInitial = false;
+      });
+    });
   }
 }

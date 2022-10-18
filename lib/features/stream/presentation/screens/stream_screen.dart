@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/presentation/widgets/app_bar_stream.dart';
 import 'package:streamskit_mobile/features/stream/presentation/widgets/comment_widget.dart';

@@ -1,8 +1,13 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+// Package imports:
 import 'package:phosphor_flutter/phosphor_flutter.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/core/util/styles/style.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/button_circle.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/list_category_home.dart';
 import 'package:streamskit_mobile/features/home/presentation/widgets/list_live_stream.dart';
@@ -40,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(
-                  imageDefault,
+                  launcherIcon,
                   height: 44.sp,
                   width: 44.sp,
                   fit: BoxFit.cover,

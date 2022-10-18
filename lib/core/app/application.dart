@@ -1,5 +1,9 @@
-import 'package:streamskit_mobile/core/app/config/base_local_data.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:streamskit_mobile/core/app/config/base_local_data.dart';
+import 'package:streamskit_mobile/core/app/config/base_remote_data.dart';
 import 'package:streamskit_mobile/core/injection/injection_container.dart';
 import 'package:streamskit_mobile/core/util/path_helper.dart';
 
@@ -9,10 +13,15 @@ class Application {
     try {
       // Init dependency injection
       configureDependencies();
+
       // Prepare path cache
       await PathHelper.createDirStreamOS();
+
       // Init Hive
       await BaseLocalData.initialBox();
+
+      // Configure Dio [Cookie, Retry, Transformer]
+      await BaseRemoteData.configureDio();
     } catch (error) {
       debugPrint(error.toString());
     }

@@ -1,5 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
+import 'package:cached_network_image/cached_network_image.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/util/custom_image/default_image.dart';
 import 'package:streamskit_mobile/core/util/custom_image/place_holder_image.dart';
@@ -35,13 +40,18 @@ class CustomNetworkImage extends StatelessWidget {
         ? placeholderWidget ??
             DefaultImage(
               height: height ?? width!,
-              width: height ?? width!,
+              width: width ?? height!,
               margin: margin,
               shape: shape,
               borderRadius: borderRadius,
               childInAvatar: childInAvatar,
             )
         : CachedNetworkImage(
+            cacheKey: urlToImage,
+            memCacheHeight: 1024 * 200,
+            memCacheWidth: 1024 * 200,
+            maxWidthDiskCache: 1024 * 1024,
+            maxHeightDiskCache: 1024 * 1024,
             placeholderFadeInDuration: const Duration(milliseconds: delay200ms),
             fadeInDuration: const Duration(milliseconds: delay200ms),
             fadeOutDuration: const Duration(milliseconds: delay200ms),
@@ -69,7 +79,7 @@ class CustomNetworkImage extends StatelessWidget {
                   margin: margin,
                   child: PlaceHolderImage(
                     height: height ?? width!,
-                    width: height ?? width!,
+                    width: width ?? height!,
                     shape: shape,
                     borderRadius: borderRadius,
                   ),
@@ -78,7 +88,7 @@ class CustomNetworkImage extends StatelessWidget {
                 placeholderWidget ??
                 DefaultImage(
                   height: height ?? width!,
-                  width: height ?? width!,
+                  width: width ?? height!,
                   margin: margin,
                   shape: shape,
                   borderRadius: borderRadius,

@@ -1,12 +1,17 @@
+// Dart imports:
 import 'dart:ui';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
+import 'package:streamskit_mobile/core/util/numeral/numeral.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/core/util/styles/style.dart';
 import 'package:streamskit_mobile/features/profile/data/live_card_model.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class LiveCardProflie extends StatelessWidget {
   final LiveCardModel liveModel;
@@ -27,7 +32,7 @@ class LiveCardProflie extends StatelessWidget {
             urlToImage: liveModel.image,
             shape: BoxShape.rectangle,
             borderRadius: BorderRadius.circular(16.sp),
-            height: 175.sp,
+            height: double.infinity,
           ),
           liveModel.statusLive
               ? Positioned(
@@ -83,7 +88,7 @@ class LiveCardProflie extends StatelessWidget {
                             ),
                             SizedBox(width: 5.sp),
                             Text(
-                              formatNumberViewer(liveModel.numberViewer),
+                              Numeral(liveModel.numberViewer).format(),
                               style: text9mCL,
                             )
                           ],
@@ -97,7 +102,7 @@ class LiveCardProflie extends StatelessWidget {
             alignment: Alignment.bottomLeft,
             height: double.infinity,
             width: double.infinity,
-            padding: EdgeInsets.only(bottom: 16.sp, left: 8.sp),
+            padding: EdgeInsets.only(bottom: 8.sp, left: 8.sp),
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.transparent, Colors.black.withOpacity(0.89)],

@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/features/stream/presentation/widgets/hearts_animation.dart';
 
 class FloatingHeartsProvider with ChangeNotifier {

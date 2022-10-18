@@ -1,8 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/core/util/themes/app_color.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
 
 class UserWidget extends StatelessWidget {

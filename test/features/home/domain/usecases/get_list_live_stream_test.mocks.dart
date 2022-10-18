@@ -3,9 +3,13 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+
+// Dart imports:
 import 'dart:ui' as _i2;
 
+// Package imports:
 import 'package:mockito/mockito.dart' as _i1;
+
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart'
     as _i3;
 

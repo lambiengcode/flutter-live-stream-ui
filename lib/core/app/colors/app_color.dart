@@ -1,3 +1,4 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
 
 var colorBlack = const Color(0xFF121212);
@@ -7,6 +8,15 @@ var colorPrimary = const Color(0xFF1DA1F2);
 var colorTitle = const Color(0xFF2C3D50);
 var colorReds400 = Colors.red.shade400;
 var colorBorderAvatar = const Color(0xff3e455b);
+
+var colorBlack1 = const Color(0xFF191414);
+var colorPink = const Color(0xFFcd32d7);
+var colorPurple2 = const Color(0xFFa9ade6);
+var colorBlack2 = const Color(0xFF303234);
+var colorRed = const Color(0xFFf11a42);
+var colorBlue = const Color(0xFF1d51fe);
+var colorPurple = const Color(0xFF7d60e5);
+var colorHintText = const Color(0xFFa0a0a0);
 
 var colorHigh = Colors.redAccent;
 var colorMedium = Colors.amber.shade700;
@@ -33,6 +43,7 @@ Color mCU = Colors.grey.shade300;
 Color mCH = Colors.grey.shade400;
 Color mGB = Colors.grey.shade500;
 Color mGM = Colors.grey.shade700;
+Color mGE = Colors.grey.shade800;
 Color mGD = Colors.grey.shade900;
 Color mCD = Colors.black.withOpacity(0.075);
 Color mCC = Colors.green.withOpacity(0.65);
@@ -112,12 +123,12 @@ class AppColors {
       accent: const Color(0xFF17c063),
       disabled: Colors.black12,
       error: const Color(0xFFFF7466),
-      divider: Colors.black26,
+      divider: Colors.white24,
       dividerBackgroundColor: Colors.black54,
       button: const Color(0xFF657786),
-      contentText1: colorBlack,
-      contentText2: colorBlack,
-      subText1: mGD,
+      contentText1: mCL,
+      contentText2: mC,
+      subText1: mCH,
       subText2: mGB,
     );
   }

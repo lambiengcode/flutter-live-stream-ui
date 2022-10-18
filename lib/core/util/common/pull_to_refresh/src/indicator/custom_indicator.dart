@@ -1,4 +1,7 @@
+// Flutter imports:
 import 'package:flutter/widgets.dart';
+
+// Project imports:
 import '../internals/indicator_wrap.dart';
 import '../smart_refresher.dart';
 

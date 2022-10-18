@@ -6,8 +6,12 @@
 
 import 'package:flutter/material.dart'
     hide RefreshIndicator, RefreshIndicatorState;
+
+// Flutter imports:
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/common/pull_to_refresh/pull_to_refresh.dart';
 
 /// direction that icon should place to the text

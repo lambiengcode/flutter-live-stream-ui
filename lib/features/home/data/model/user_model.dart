@@ -1,12 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+
+// Dart imports:
 import 'dart:convert';
 
+// Flutter imports:
 import 'package:flutter/foundation.dart';
 
 class UserModel {
   String? id;
-  final String fullName;
-  final String urlToImage;
+  String fullName;
+  String urlToImage;
   String? description;
   String? phoneNumber;
   bool gender;

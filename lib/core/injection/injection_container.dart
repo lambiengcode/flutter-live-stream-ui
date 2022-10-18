@@ -1,5 +1,8 @@
+// Package imports:
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/injection/injection_container.config.dart';
 
 final getIt = GetIt.instance;

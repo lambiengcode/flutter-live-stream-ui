@@ -1,8 +1,14 @@
+// Dart imports:
+import 'dart:math' as math;
+import 'dart:ui';
+
+// Flutter imports:
 import 'package:flutter/material.dart';
 
-import 'dart:ui';
-import 'dart:math' as math;
+// Package imports:
 import 'package:provider/provider.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/stream/provider/hearts_provider.dart';
 

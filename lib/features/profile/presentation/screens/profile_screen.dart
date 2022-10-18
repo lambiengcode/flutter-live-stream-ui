@@ -1,5 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Package imports:
 import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
+
+// Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
@@ -308,30 +313,4 @@ class _ProfileScreenState extends State<ProfileScreen>
       followers: 9400,
       followings: 8543337121,
       listFields: listFieldLive);
-}
-
-String formatNumberViewer(int number) {
-  if (number <= 0) return "0";
-  if (number < 950) {
-    return number.toString();
-  } else if (number >= 950 && number < 950000) {
-    return '${(number / 1000).toStringAsFixed(1)}K';
-  } else if (number >= 950000 && number < 950000000) {
-    return '${(number / 1000000).toStringAsFixed(1)}M';
-  } else {
-    return '${(number / 1000000000).toStringAsFixed(1)}B';
-  }
-}
-
-String formatNumberIndex(int number) {
-  if (number <= 0) return "0";
-  if (number < 9500) {
-    return number.toString();
-  } else if (number >= 9500 && number < 950000) {
-    return '${(number / 1000).toStringAsFixed(1)}K';
-  } else if (number >= 950000 && number < 950000000) {
-    return '${(number / 1000000).toStringAsFixed(1)}M';
-  } else {
-    return '${(number / 1000000000).toStringAsFixed(1)}B';
-  }
 }

@@ -1,7 +1,10 @@
+// Flutter imports:
 import 'package:flutter/material.dart';
+
+// Project imports:
+import 'package:streamskit_mobile/core/util/numeral/numeral.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/profile_screen.dart';
 
 class IndexInfoUser extends StatelessWidget {
   final String titleIndex;
@@ -17,7 +20,7 @@ class IndexInfoUser extends StatelessWidget {
     return Column(
       children: [
         Text(
-          formatNumberIndex(numberIndex),
+          Numeral(numberIndex).format(),
           style: text13w700mCL,
         ),
         SizedBox(height: 2.sp),

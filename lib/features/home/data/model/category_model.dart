@@ -1,6 +1,8 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+// Project imports:
+import 'package:streamskit_mobile/core/util/styles/style.dart';
 
 class CategoryModel {
   String title;
