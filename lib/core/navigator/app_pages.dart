@@ -8,7 +8,7 @@ import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/navigator/scaffold_wrapper.dart';
 import 'package:streamskit_mobile/core/navigator/transition_route.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
-import 'package:streamskit_mobile/features/auth/presentation/screens/auth_screen.dart';
+import 'package:streamskit_mobile/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:streamskit_mobile/features/home.dart';
 import 'package:streamskit_mobile/features/home/presentation/splash_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/screens/edit_description_screen.dart';
@@ -39,7 +39,7 @@ class AppNavigator extends RouteObserver<PageRoute<dynamic>> {
       case Routes.authenticationRoute:
         return _buildRoute(
           settings,
-          const AuthPage(),
+          const SignInScreen(),
         );
 
       case Routes.editDescriptionRoute:
