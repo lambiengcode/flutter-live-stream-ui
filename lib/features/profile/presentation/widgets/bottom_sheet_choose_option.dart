@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
+import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/setting_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/row_icon_text.dart';
 
 class BottomSheetChooseOption extends StatelessWidget {
@@ -45,11 +46,9 @@ class BottomSheetChooseOption extends StatelessWidget {
             title: "Settings and privacy",
             iconLeading: Icons.settings_outlined,
             onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const SettingScreen(),
-                ),
+              AppNavigator.pop();
+              AppNavigator.push(
+                Routes.settingRoute,
               );
             },
           ),

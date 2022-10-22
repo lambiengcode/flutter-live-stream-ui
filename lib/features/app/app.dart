@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 // Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/app/themes/themes.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
 import 'package:streamskit_mobile/core/util/after_layout_mixin.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/auth/presentation/bloc/auth_bloc.dart';
@@ -34,10 +35,15 @@ class _AppState extends State<App> with AfterLayoutMixin {
     return Sizer(
       builder: ((context, orientation, deviceType) {
         return MaterialApp(
+          navigatorKey: AppNavigator.navigatorKey,
           debugShowCheckedModeBanner: false,
           theme: AppTheme.light().data,
           darkTheme: AppTheme.dark().data,
           themeMode: ThemeMode.dark,
+          navigatorObservers: [NavigatorObserver()],
+          onGenerateRoute: (settings) {
+            return AppNavigator().getRoute(settings);
+          },
           home: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, auth) {
               if (_isInitial) {

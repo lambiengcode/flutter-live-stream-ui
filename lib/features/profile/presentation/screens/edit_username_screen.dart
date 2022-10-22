@@ -7,6 +7,7 @@ import 'package:flutter_phosphor_icons/flutter_phosphor_icons.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
@@ -51,7 +52,7 @@ class _EditUserNameScreenState extends State<EditUserNameScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.sp),
           child: TouchableOpacity(
             onTap: () {
-              Navigator.pop(context);
+              AppNavigator.pop();
             },
             child: Icon(
               PhosphorIcons.arrow_left,
@@ -103,7 +104,7 @@ class _EditUserNameScreenState extends State<EditUserNameScreen> {
             TouchableOpacity(
               onTap: () {
                 if (_formKey.currentState!.validate()) {
-                  Navigator.pop(context);
+                  AppNavigator.pop();
                 }
               },
               child: Container(

@@ -7,14 +7,13 @@ import 'package:intl/intl.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
+import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/util/common/touchable_opacity.dart';
 import 'package:streamskit_mobile/core/util/custom_image/custom_netword_image.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/core/util/styles/profile_style.dart';
 import 'package:streamskit_mobile/features/home/data/model/user_model.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/edit_description_screen.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/edit_phone_number_screen.dart';
-import 'package:streamskit_mobile/features/profile/presentation/screens/edit_username_screen.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/bottom_sheet_birthday.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/bottom_sheet_gender.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/bottom_sheet_image.dart';
@@ -57,7 +56,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           padding: EdgeInsets.symmetric(horizontal: 16.sp),
           child: TouchableOpacity(
             onTap: () {
-              Navigator.pop(context);
+              AppNavigator.pop();
             },
             child: Icon(
               PhosphorIcons.arrow_left,
@@ -119,11 +118,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(height: 12.sp),
             ProfileEditWidget(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        const EditUserNameScreen(username: "Tony Tony Chopper"),
-                  ),
+                AppNavigator.push(
+                  Routes.editUsernameRoute,
+                  arguments: {"username": "Tony Tony Chopper"},
                 );
               },
               title: "Nickname/Tên hiển thị",
@@ -139,13 +136,12 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(height: 12.sp),
             ProfileEditWidget(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const EditDescriptionScreen(
-                      description:
-                          "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM",
-                    ),
-                  ),
+                AppNavigator.push(
+                  Routes.editDescriptionRoute,
+                  arguments: {
+                    "description":
+                        "Hành trình leo thách đấu mùa 12 cùng top lane!\nhttps://www.facebook.com/chopper189 \n11PM-12PM"
+                  },
                 );
               },
               title: "Giới thiệu cá nhân",
@@ -163,16 +159,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             SizedBox(height: 12.sp),
             ProfileEditWidget(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const EditPhoneNumberScreen(
-                      phoneNumber: '0338671454',
-                    ),
-                  ),
+                AppNavigator.push(
+                  Routes.editPhoneNumberRoute,
+                  arguments: {
+                    "phoneNumber": '0338671454',
+                  },
                 );
               },
-              title: "Số điện thoại",
-              value: user.phoneNumber ?? "Số điện thoại",
+              title: "Phone Number",
+              value: user.phoneNumber ?? "Phone Number",
               style: user.phoneNumber == null ? text11mGM : null,
             ),
             SizedBox(height: 2.sp),
@@ -185,15 +180,15 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     handleSelectGender: (value) {
                       if (value != null) {
                         setState(() {
-                          user.gender = value == "Nam" ? true : false;
+                          user.gender = value == "Man" ? true : false;
                         });
                       }
                     },
                   ),
                 );
               },
-              title: "Giới tính",
-              value: user.gender ? "Nam" : "Nữ",
+              title: "Gender",
+              value: user.gender ? "Man" : "Woman",
             ),
             SizedBox(height: 2.sp),
             ProfileEditWidget(
@@ -210,7 +205,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                           },
                         );
                       }
-                      Navigator.pop(context);
+                      AppNavigator.pop();
                     },
                     dateInit: user.birthday ??
                         DateTime(
@@ -219,7 +214,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   ),
                 );
               },
-              title: "Ngày sinh",
+              title: "Birthday",
               value: DateFormat("dd-MM-yyyy").format(
                 user.birthday ??
                     DateTime(

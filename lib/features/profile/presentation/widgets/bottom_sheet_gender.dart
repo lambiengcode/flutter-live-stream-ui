@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/app/colors/app_color.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/bottom_sheet_choose_option.dart';
 import 'package:streamskit_mobile/features/profile/presentation/widgets/row_icon_text.dart';
@@ -32,10 +33,10 @@ class BottomSheetGender extends StatelessWidget {
             height: 8.sp,
           ),
           RowIconText(
-            title: "Nam",
+            title: "Man",
             onTap: () {
-              Navigator.pop(context);
-              handleSelectGender("Nam");
+              AppNavigator.pop();
+              handleSelectGender("Man");
             },
           ),
           Divider(
@@ -43,10 +44,10 @@ class BottomSheetGender extends StatelessWidget {
             color: mCU,
           ),
           RowIconText(
-            title: "Nữ",
+            title: "Woman",
             onTap: () {
-              Navigator.pop(context);
-              handleSelectGender("Nữ");
+              AppNavigator.pop();
+              handleSelectGender("Woman");
             },
           ),
         ],

@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 // Project imports:
 import 'package:streamskit_mobile/core/error/failure.dart';
+import 'package:streamskit_mobile/core/navigator/app_pages.dart';
+import 'package:streamskit_mobile/core/navigator/app_routes.dart';
 import 'package:streamskit_mobile/core/usecase/usecase.dart';
 import 'package:streamskit_mobile/core/util/firebase/firebase_auth.dart';
 import 'package:streamskit_mobile/features/auth/domain/entities/auth_type.dart';
@@ -80,6 +82,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void signOut(Emitter<AuthState> emit) async {
     Either<Failure, bool> signOutSucceed = _signOut.call(NoParams());
-    signOutSucceed.fold((l) => l, (r) => emit(AuthFailure()));
+    signOutSucceed.fold((l) => l, (r) {
+      emit(AuthFailure());
+      AppNavigator.popUntil(Routes.rootRoute);
+    });
   }
 }
