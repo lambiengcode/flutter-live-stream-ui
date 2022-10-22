@@ -51,5 +51,4 @@ class AppNavigatorObserver extends NavigatorObserver {
   static void resetRoutes() {
     routeNames = [];
   }
-
 }
