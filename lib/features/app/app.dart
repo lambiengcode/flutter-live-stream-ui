@@ -4,12 +4,17 @@ import 'dart:async';
 // Flutter imports:
 import 'package:flutter/material.dart';
 
+// Package imports:
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 // Project imports:
 import 'package:streamskit_mobile/core/app/constant/constants.dart';
 import 'package:streamskit_mobile/core/app/themes/themes.dart';
 import 'package:streamskit_mobile/core/navigator/app_pages.dart';
 import 'package:streamskit_mobile/core/util/after_layout_mixin.dart';
 import 'package:streamskit_mobile/core/util/sizer_custom/sizer.dart';
+import 'package:streamskit_mobile/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:streamskit_mobile/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:streamskit_mobile/features/home.dart';
 import 'package:streamskit_mobile/features/home/presentation/splash_screen.dart';
 
@@ -39,7 +44,20 @@ class _AppState extends State<App> with AfterLayoutMixin {
           onGenerateRoute: (settings) {
             return AppNavigator().getRoute(settings);
           },
-          home: _isInitial ? const SplashScreen() : const Home(),
+          home: BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, auth) {
+              if (_isInitial) {
+                return const SplashScreen();
+              }
+
+              bool isLogined = auth is AuthSuccess;
+              if (isLogined) {
+                return const Home();
+              }
+
+              return const SignInScreen();
+            },
+          ),
         );
       }),
     );

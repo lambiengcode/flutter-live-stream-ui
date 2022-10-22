@@ -1,4 +1,4 @@
-echo "0. Run release without environment"
+echo "0. Unit Test"
 echo "1. Debug with: environment is DEV"
 echo "2. Debug with: environment is STAGING"
 echo "3. Debug with: environment is PRODUCTION"
@@ -10,6 +10,10 @@ while :
 do 
 	read -p "Run with: " input
 	case $input in
+		0)
+		flutter test -r expanded
+		break
+		;;
 		1)
 		flutter run --dart-define="lambiengcode=DEV"
 		break

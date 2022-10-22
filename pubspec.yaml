@@ -36,7 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
   # State Management
-  provider: ^6.0.3
+  flutter_bloc: ^8.1.1
 
   # Network
   cookie_jar: ^3.0.1
@@ -70,10 +70,19 @@ dependencies:
   # Mics
   equatable: ^2.0.5
   dartz: ^0.10.1
-  rxdart: ^0.27.5
   path_provider: ^2.0.11
 
-  # Permission
+  # Firebase
+  firebase_core: ^1.20.0
+  firebase_messaging: ^12.0.1
+  firebase_auth: ^3.6.2
+  firebase_crashlytics: ^2.8.6
+
+  # Authenticate
+  google_sign_in: ^5.4.0
+  flutter_facebook_auth: ^4.4.0+1
+  sign_in_with_apple: ^4.1.0
+  crypto: ^3.0.2
   sms_autofill: ^2.2.0
 
 dev_dependencies:

@@ -2,7 +2,9 @@
 import 'package:flutter/material.dart';
 
 // Project imports:
-import 'package:streamskit_mobile/core/util/themes/app_icons.dart';
+import 'package:streamskit_mobile/core/util/styles/style.dart';
+
+// Project imports:
 
 class DefaultImage extends StatelessWidget {
   final double height;
@@ -31,7 +33,7 @@ class DefaultImage extends StatelessWidget {
         borderRadius: borderRadius,
         image: DecorationImage(
           image: const AssetImage(
-            imageDefault,
+            launcherIcon,
           ),
           fit: shape == BoxShape.circle ? BoxFit.fitHeight : BoxFit.contain,
         ),

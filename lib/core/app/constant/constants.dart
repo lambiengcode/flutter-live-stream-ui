@@ -1,5 +1,5 @@
 // Remote Data
-const String serviceBaseEndpoint = 'https://lambiengcode.tk';
+const String serviceBaseEndpoint = 'https://streamos.tk/';
 
 // Utils
 const double inchToDP = 160;

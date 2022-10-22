@@ -10,17 +10,10 @@ import 'package:streamskit_mobile/core/usecase/usecase.dart';
 import 'package:streamskit_mobile/features/home/data/model/live_stream_model.dart';
 import 'package:streamskit_mobile/features/home/domain/repositories/live_stream_repository.dart';
 import 'package:streamskit_mobile/features/home/domain/usecases/get_list_live_streaming.dart';
+import 'get_list_live_stream_test.mocks.dart';
 
-@GenerateMocks([LiveStreamModel])
+@GenerateNiceMocks([MockSpec<LiveStreamRepository>()])
 List<LiveStreamModel> liveStreams = listLiveStreamFake;
-
-class MockLiveStreamRepository extends Mock implements LiveStreamRepository {
-  @override
-  Either<Failure, List<LiveStreamModel>> getLiveStreams() {
-    return (super.noSuchMethod(Invocation.method(#getTodos, [])) ??
-        Right(liveStreams));
-  }
-}
 
 void main() {
   late GetListLiveStreaming usecase;
