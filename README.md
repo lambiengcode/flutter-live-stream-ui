@@ -1,16 +1,27 @@
-# streamskit_mobile
+# StreamOS - UI Live Streaming App using Flutter
 
-A new Flutter project.
+StreamOS is a live streaming and chat application developed with Flutter. The app has been built using Test-Driven Development (TDD) approach, ensuring that the login functionality is thoroughly tested through unit tests.
+
+## Screenshots
+
+## Features
+
+- Intuitive user interface
+- Login with Google/Apple using Firebase
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To get started with StreamOS UI, follow the instructions below.
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
+- Flutter
+- Firebase account
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
+1. Clone the repository: `git clone https://github.com/lambiengcode/flutter-live-stream-app.git`
+2. Install dependencies: `flutter pub get`
+3. Run the app: `flutter run`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Conclusion
+
+StreamOS UI is a sleek and intuitive Flutter application with a robust login system. The app's login functionality has been implemented using Firebase, ensuring a secure and seamless user experience.
